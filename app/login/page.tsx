@@ -6,10 +6,12 @@ import { redirect } from "next/navigation";
 const LoginPage = async () => {
   const session = await getServerSession();
 
-  /* if (session?.user) {
+  console.log(session);
+
+  if (session?.user) {
     if (session?.user?.name) redirect("/");
     if (!session?.user?.name) redirect("/setup-profile");
-  } */
+  }
 
   return (
     <div className=" flex h-[100dvh] w-full items-center justify-center">
