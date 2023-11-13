@@ -3,9 +3,9 @@
 import { LoginForm } from "@/components/forms/loginForm";
 import React from "react";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
-const LoginPage = async () => {
+const LoginPage = () => {
   const { data: session } = useSession();
   const router = useRouter();
 
