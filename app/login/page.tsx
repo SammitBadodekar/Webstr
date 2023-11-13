@@ -1,15 +1,20 @@
+"use client";
+
 import { LoginForm } from "@/components/forms/loginForm";
 import React from "react";
-import { getServerSession } from "next-auth";
-import { redirect } from "next/navigation";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 
 const LoginPage = async () => {
-  const session = await getServerSession();
+  const { data: session } = useSession();
+  const router = useRouter();
 
-  if (session?.user) {
-    if (session?.user?.name) redirect("/");
-    if (!session?.user?.name) redirect("/setup-profile");
-  }
+  console.log(session?.user);
+
+  /* if (session?.user) {
+    if (session?.user?.name) 
+    if (!session?.user?.name) 
+  } */
 
   return (
     <div className=" flex h-[100dvh] w-full items-center justify-center">
