@@ -93,12 +93,6 @@ export function LoginForm() {
           <BsGoogle />
           Login with Google
         </Button>
-        <Button
-          onClick={() => signOut()}
-          className="flex items-center gap-2 font-extrabold"
-        >
-          LogOut
-        </Button>
       </div>
     </Form>
   );
