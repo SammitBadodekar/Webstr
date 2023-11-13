@@ -1,5 +1,6 @@
 import { getToken } from "next-auth/jwt";
 import { NextRequest, NextResponse } from "next/server";
+import { appMiddleware } from "./lib/middleware/app";
 
 export const config = {
   matcher: [
@@ -17,16 +18,5 @@ export const config = {
 };
 
 export default async function middleware(req: NextRequest) {
-  const token = await getToken({
-    req,
-    secret: process.env.NEXTAUTH_SECRET,
-  });
-
-  console.log(token?.email);
-
-  if (!token?.email) {
-    return NextResponse.redirect(new URL("/login", req.url));
-  }
-
-  return NextResponse.next();
+  return appMiddleware(req);
 }
