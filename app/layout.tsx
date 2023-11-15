@@ -6,7 +6,7 @@ import Providers from "@/components/providers/AllProviders";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "laWeb",
+  title: "Webstr",
   description: "Open source no-code website builder",
 };
 
@@ -17,7 +17,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-lightTheme dark:bg-darkTheme`}>
+      <body
+        className={`${inter.className} h-[100dvh] bg-lightTheme dark:bg-darkTheme`}
+      >
         <Providers>{children}</Providers>
       </body>
     </html>

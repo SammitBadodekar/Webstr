@@ -68,6 +68,7 @@ export function LoginForm() {
           <Button
             type="submit"
             className="flex items-center gap-2 font-extrabold"
+            disabled={isSubmitting}
           >
             {isSubmitting ? (
               <>

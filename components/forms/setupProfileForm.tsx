@@ -20,6 +20,8 @@ import { useSession } from "next-auth/react";
 import { setupProfile } from "@/app/actions/setupProfile";
 import { SetupProfileResponse } from "@/types";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { LiaSpinnerSolid } from "react-icons/lia";
 
 const FormSchema = z.object({
   username: z.string().min(2, {
@@ -30,6 +32,7 @@ const FormSchema = z.object({
 export default function SetupProfileForm() {
   const { update, data: session } = useSession();
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -40,6 +43,8 @@ export default function SetupProfileForm() {
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     await update({ name: data.username });
+
+    setIsLoading(true);
 
     const response: SetupProfileResponse = await setupProfile(
       data.username,
@@ -53,6 +58,8 @@ export default function SetupProfileForm() {
     if (response.success) {
       router.push("/");
     }
+
+    setIsLoading(false);
   }
 
   return (
@@ -79,7 +86,20 @@ export default function SetupProfileForm() {
               </FormItem>
             )}
           />
-          <Button type="submit">Save</Button>
+          <Button type="submit" disabled={isLoading}>
+            {isLoading ? (
+              <>
+                <div className=" animate-spin">
+                  <LiaSpinnerSolid />
+                </div>
+              </>
+            ) : (
+              <>
+                <span className=" text-lg"></span>
+                Save
+              </>
+            )}
+          </Button>
         </form>
       </div>
     </Form>

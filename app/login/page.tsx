@@ -6,8 +6,6 @@ import { redirect } from "next/navigation";
 const LoginPage = async () => {
   const session = await getServerSession();
 
-  console.log(session?.user);
-
   if (session?.user) {
     if (session?.user?.name) redirect("/");
     if (!session?.user?.name) redirect("/setup-profile");
