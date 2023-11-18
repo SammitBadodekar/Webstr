@@ -49,18 +49,17 @@ export default function SetupProfileForm() {
       session?.user?.email!
     );
 
-    await update({ name: data.username });
-
-    toast({
-      title: `${response.message}`,
-    });
-
     if (response.success) {
+      await update({ name: data.username });
+
       router.refresh();
       router.push("/");
     }
 
     setIsLoading(false);
+    toast({
+      title: `${response.message}`,
+    });
   }
 
   return (
