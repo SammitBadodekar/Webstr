@@ -49,12 +49,13 @@ export default function SetupProfileForm() {
       session?.user?.email!
     );
 
+    await update({ name: data.username });
+
     toast({
       title: `${response.message}`,
     });
 
     if (response.success) {
-      const user = await update({ name: data.username });
       router.refresh();
       router.push("/");
     }
