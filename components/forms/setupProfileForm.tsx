@@ -42,8 +42,6 @@ export default function SetupProfileForm() {
   });
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
-    await update({ name: data.username });
-
     setIsLoading(true);
 
     const response: SetupProfileResponse = await setupProfile(
@@ -56,6 +54,8 @@ export default function SetupProfileForm() {
     });
 
     if (response.success) {
+      const user = await update({ name: data.username });
+      router.refresh();
       router.push("/");
     }
 

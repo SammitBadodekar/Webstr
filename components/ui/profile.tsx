@@ -14,19 +14,21 @@ import { truncateString } from "../truncateString";
 import SignOutButton from "./signOutButton";
 import Link from "next/link";
 
+export const revalidate = 5;
+
 const Profile = async () => {
   const session = await getServerSession();
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
-        <ProfileAvatar src={session?.user?.image!} size={60} />
+        <ProfileAvatar src={session?.user?.image!} size={40} />
       </DropdownMenuTrigger>
-      <DropdownMenuContent className=" absolute -right-4 top-4 grid w-max gap-4 bg-secondaryLightTheme p-4 font-bold dark:bg-darkGray">
+      <DropdownMenuContent className=" absolute -right-4 top-4 grid w-max gap-2 bg-secondaryLightTheme p-4 font-bold dark:bg-darkGray">
         <DropdownMenuLabel className=" flex items-center gap-2">
-          <ProfileAvatar src={session?.user?.image!} size={80} />
+          <ProfileAvatar src={session?.user?.image!} size={60} />
           <div>
-            <h2 className=" text-xl font-bold">
+            <h2 className=" text-lg font-bold">
               {truncateString(session?.user?.name!, 150)}
             </h2>
             <h2 className=" font-normal text-slate-400">

@@ -26,14 +26,14 @@ export const options: AuthOptions = {
   ],
   callbacks: {
     jwt: async ({ token, user, session, trigger }) => {
+      if (trigger === "update" && session?.name) {
+        token.name = session.name;
+      }
       if (!token.email) {
         return {};
       }
       if (user) {
         token.user = user;
-      }
-      if (trigger === "update" && session?.name) {
-        token.name = session.name;
       }
       return token;
     },
