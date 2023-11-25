@@ -16,7 +16,7 @@ const Header = () => {
       <div className=" ml-auto flex items-center gap-4  ">
         <ThemeToggle />
         <Button asChild className=" font-bold" size="sm">
-          <Link href="/create">+ new</Link>
+          <Link href="/create">Create a Website</Link>
         </Button>
         <Profile />
       </div>

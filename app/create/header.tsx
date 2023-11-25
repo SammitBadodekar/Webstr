@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import Profile from "@/components/ui/profile";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
@@ -12,6 +13,7 @@ const Header = () => {
         </Link>
         <p>Untitled</p>
       </div>
+      <Button size="sm">Publish</Button>
     </div>
   );
 };

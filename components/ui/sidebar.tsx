@@ -13,7 +13,7 @@ import ProfileAvatar from "./ProfileAvatar";
 const Sidebar = async () => {
   const session = await getServerSession();
   return (
-    <div className=" m-2 h-[calc(100dvh_-_4.5rem)] w-[22vw] max-w-xs overflow-y-scroll rounded-lg bg-secondaryLightTheme p-2 dark:bg-darkGray">
+    <div className=" m-2 h-[calc(100dvh_-_4.5rem)] w-[22vw] max-w-xs overflow-y-scroll rounded-lg bg-secondaryLightTheme p-2 shadow dark:bg-darkGray">
       <div className=" flex items-center gap-2 p-2 px-4">
         <ProfileAvatar src={session?.user?.image!} size={40} />
         <p className=" text-sm font-semibold">Free Tier</p>
