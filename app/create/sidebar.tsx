@@ -15,7 +15,7 @@ const Sidebar = ({
     setItems((prev: any) => [item, ...prev]);
   };
   return (
-    <div className=" m-2 h-[calc(100dvh_-_3.5rem)] w-[30vw] max-w-sm rounded-lg bg-secondaryLightTheme p-2 shadow dark:bg-darkGray">
+    <div className=" m-2 h-[calc(100dvh_-_4rem)] w-[30vw] max-w-sm rounded-lg bg-secondaryLightTheme p-2 shadow dark:bg-darkGray">
       <Button
         onClick={() => {
           addItem(counter + 1);

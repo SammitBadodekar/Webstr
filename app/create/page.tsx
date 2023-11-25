@@ -1,20 +1,13 @@
 "use client";
-import React, { useState } from "react";
-import Sidebar from "./sidebar";
+import React from "react";
 import Header from "./header";
-import Canvas from "./canvas";
+import Builder from "./builder";
 
 const Page = () => {
-  const [items, setItems] = useState([1]);
   return (
     <div className="">
       <Header />
-      <div className="flex w-full  ">
-        <div className=" w-full">
-          <Canvas items={items} setItems={setItems} />
-        </div>
-        <Sidebar items={items} setItems={setItems} />
-      </div>
+      <Builder />
     </div>
   );
 };

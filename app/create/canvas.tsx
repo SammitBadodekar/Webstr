@@ -4,9 +4,11 @@ import {
   DndContext,
   closestCenter,
   KeyboardSensor,
+  TouchSensor,
   PointerSensor,
   useSensor,
   useSensors,
+  MouseSensor,
 } from "@dnd-kit/core";
 import {
   arrayMove,
@@ -17,6 +19,7 @@ import {
 
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
+import { Button } from "@/components/ui/button";
 
 function SortableItem(props: any) {
   const { attributes, listeners, setNodeRef, transform, transition } =
@@ -53,19 +56,14 @@ function Canvas({
   setItems: (props: any) => void;
 }) {
   const sensors = useSensors(
-    useSensor(PointerSensor),
-    useSensor(KeyboardSensor, {
-      coordinateGetter: sortableKeyboardCoordinates,
-    })
+    useSensor(MouseSensor),
+    useSensor(TouchSensor),
+    useSensor(KeyboardSensor)
   );
 
   return (
-    <div className=" m-2 h-[calc(100dvh_-_4rem)] overflow-y-scroll p-2">
-      <DndContext
-        sensors={sensors}
-        collisionDetection={closestCenter}
-        onDragEnd={handleDragEnd}
-      >
+    <div className=" m-2 h-[calc(100dvh_-_4rem)] overflow-x-hidden overflow-y-scroll p-2">
+      <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
         <SortableContext items={items} strategy={verticalListSortingStrategy}>
           {items.map((id) => (
             <SortableItem key={id} id={id} />
@@ -78,10 +76,10 @@ function Canvas({
   function handleDragEnd(event: any) {
     const { active, over } = event;
 
-    if (active.id !== over.id) {
+    if (active.id !== over?.id) {
       setItems((items: any) => {
-        const oldIndex = items.indexOf(active.id);
-        const newIndex = items.indexOf(over.id);
+        const oldIndex = items.indexOf(active?.id);
+        const newIndex = items.indexOf(over?.id);
 
         return arrayMove(items, oldIndex, newIndex);
       });
