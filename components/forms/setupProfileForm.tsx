@@ -51,8 +51,6 @@ export default function SetupProfileForm() {
 
     if (response.success) {
       await update({ name: data.username });
-
-      router.refresh();
       router.push("/");
     }
 

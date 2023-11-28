@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import ProfileAvatar from "./ProfileAvatar";
 import {
@@ -9,20 +10,25 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import { getServerSession } from "next-auth";
+import { useSession } from "next-auth/react";
 import { truncateString } from "../truncateString";
+import { Skeleton } from "@/components/ui/skeleton";
 import SignOutButton from "./signOutButton";
 import Link from "next/link";
 
 export const revalidate = 5;
 
-const Profile = async () => {
-  const session = await getServerSession();
+const Profile = () => {
+  const { data: session } = useSession();
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
-        <ProfileAvatar src={session?.user?.image!} size={40} />
+        {session?.user?.image ? (
+          <ProfileAvatar src={session?.user?.image!} size={40} />
+        ) : (
+          <Skeleton className=" h-8 w-8 rounded-full" />
+        )}
       </DropdownMenuTrigger>
       <DropdownMenuContent className=" absolute -right-4 top-4 grid w-max gap-2 bg-secondaryLightTheme p-4 font-bold dark:bg-darkGray">
         <DropdownMenuLabel className=" flex items-center gap-2">

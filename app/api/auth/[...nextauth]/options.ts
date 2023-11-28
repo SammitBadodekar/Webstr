@@ -38,12 +38,16 @@ export const options: AuthOptions = {
       return token;
     },
     session: async ({ session, token }) => {
-      (session.user as CustomUser) = {
-        id: token.sub,
-        // @ts-ignore
-        ...(token || session).user,
+      return {
+        ...session,
+        user: {
+          ...session.user,
+          id: token.sub,
+          name: token.name,
+          image: token.picture,
+          email: token.email,
+        },
       };
-      return session;
     },
   },
   pages: {
