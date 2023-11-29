@@ -19,12 +19,12 @@ import Link from "next/link";
 export const revalidate = 5;
 
 const Profile = () => {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
-        {session?.user?.image ? (
+        {status !== "loading" ? (
           <ProfileAvatar src={session?.user?.image!} size={40} />
         ) : (
           <Skeleton className=" h-8 w-8 rounded-full" />
