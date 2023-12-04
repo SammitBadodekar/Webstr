@@ -3,7 +3,6 @@ import GoogleProvider from "next-auth/providers/google";
 import EmailProvider from "next-auth/providers/email";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { prisma } from "@/lib/db";
-import { CustomUser } from "@/types";
 
 export const options: AuthOptions = {
   adapter: PrismaAdapter(prisma),

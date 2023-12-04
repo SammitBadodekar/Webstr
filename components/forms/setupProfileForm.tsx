@@ -37,7 +37,7 @@ export default function SetupProfileForm() {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      username: "",
+      username: session?.user?.name || "",
     },
   });
 

@@ -9,7 +9,7 @@ const Header = () => {
     <div className=" sticky top-0 flex items-center gap-2 bg-secondaryLightTheme p-2 px-4 shadow dark:bg-darkGray">
       <Link
         href="/"
-        className=" font-logo w-fit bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-3xl font-black text-transparent "
+        className=" background-animate font-logo w-fit bg-gradient-to-r from-orange-500 to-blue-500 bg-clip-text text-3xl font-black text-transparent "
       >
         Webstr
       </Link>

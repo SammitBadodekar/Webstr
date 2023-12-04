@@ -33,8 +33,11 @@ function SortableItem(props: any) {
 
   return (
     <div className="" ref={setNodeRef} style={style} {...attributes}>
-      <div className=" flex w-full items-center">
-        <MdDragIndicator className=" cursor-grab text-xl" {...listeners} />
+      <div className=" flex h-full w-full items-center">
+        <MdDragIndicator
+          className=" h-full w-8 cursor-grab p-1 text-xl"
+          {...listeners}
+        />
         <div className=" flex h-28 w-full items-center justify-center gap-2 rounded-md bg-gray-600 font-bold">
           <p>component</p>
           <p>{props.id} </p>
