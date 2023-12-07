@@ -1,13 +1,9 @@
+const { fontFamily } = require("tailwindcss/defaultTheme");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  content: ["../ui/src/**/*.{js,ts,jsx,tsx,mdx}"],
   darkMode: ["class"],
-  content: [
-    "./pages/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-    "./app/**/*.{ts,tsx}",
-    "./src/**/*.{ts,tsx}",
-    "../../packages/ui/**/*.{ts,tsx}",
-  ],
   theme: {
     container: {
       center: true,
@@ -18,10 +14,6 @@ module.exports = {
     },
     extend: {
       colors: {
-        darkTheme: "#1e1f22",
-        darkGray: "#2b2d31",
-        lightTheme: "#e3e5e8",
-        secondaryLightTheme: "#f2f3f5",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -57,9 +49,12 @@ module.exports = {
         },
       },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
+        lg: `var(--radius)`,
+        md: `calc(var(--radius) - 2px)`,
         sm: "calc(var(--radius) - 4px)",
+      },
+      fontFamily: {
+        sans: ["var(--font-sans)", ...fontFamily.sans],
       },
       keyframes: {
         "accordion-down": {

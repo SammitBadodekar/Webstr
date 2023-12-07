@@ -1,11 +1,16 @@
 /** @type {import('tailwindcss').Config} */
+
+const sharedConfig = require("tailwindconfig");
+
 module.exports = {
+  ...sharedConfig,
+  content: ["./**/*.{js,ts,jsx,tsx,mdx}"],
   darkMode: ["class"],
   content: [
     "./pages/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",
-    "./src/**/*.{ts,tsx}",
+    "src/**/*.{ts,tsx}",
     "../../packages/ui/**/*.{ts,tsx}",
   ],
   theme: {
@@ -18,10 +23,6 @@ module.exports = {
     },
     extend: {
       colors: {
-        darkTheme: "#1e1f22",
-        darkGray: "#2b2d31",
-        lightTheme: "#e3e5e8",
-        secondaryLightTheme: "#f2f3f5",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
