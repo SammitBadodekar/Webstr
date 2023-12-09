@@ -25,8 +25,8 @@ const Sidebar = ({
   return (
     <div
       className={` ${
-        isSidebarOpen ? "" : "m-0 w-0 translate-x-full p-0.5 md:p-2"
-      } absolute right-2 my-2 h-[calc(100dvh_-_4.5rem)] w-60 max-w-sm rounded-lg bg-secondaryLightTheme p-2 shadow transition-all ease-out dark:bg-darkGray md:m-2`}
+        isSidebarOpen ? "my-2 w-60 p-2" : "m-0 w-0 translate-x-full p-0 md:p-2"
+      } absolute right-2 h-[calc(100dvh_-_4.5rem)]  max-w-sm rounded-lg bg-secondaryLightTheme  shadow transition-all ease-out dark:bg-darkGray md:m-2`}
     >
       <button
         className={` ${

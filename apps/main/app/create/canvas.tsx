@@ -61,7 +61,7 @@ function Canvas({
   );
 
   return (
-    <div className=" m-1 h-[calc(100dvh_-_4.5rem)] overflow-x-hidden overflow-y-scroll p-1 md:m-2 md:p-2">
+    <div className=" h-[calc(100dvh_-_4.5rem)] overflow-x-hidden overflow-y-scroll p-2 md:m-2 md:p-2">
       <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
         <SortableContext items={items} strategy={verticalListSortingStrategy}>
           <div className=" grid gap-2">
