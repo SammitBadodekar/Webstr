@@ -25,16 +25,21 @@ const Sidebar = ({
   return (
     <div
       className={` ${
-        isSidebarOpen ? "" : "translate-x-full"
-      } absolute right-2 m-2 h-[calc(100dvh_-_4.5rem)] w-60 max-w-sm rounded-lg bg-secondaryLightTheme p-2 shadow transition-transform ease-out dark:bg-darkGray`}
+        isSidebarOpen ? "" : "m-0 w-0 translate-x-full p-0.5 md:p-2"
+      } absolute right-2 my-2 h-[calc(100dvh_-_4.5rem)] w-60 max-w-sm rounded-lg bg-secondaryLightTheme p-2 shadow transition-all ease-out dark:bg-darkGray md:m-2`}
     >
       <button
-        className="  absolute -left-4 top-1/2 rounded-full border-2 border-gray-500 bg-secondaryLightTheme p-2 font-bold dark:bg-darkGray"
+        className={` ${
+          isSidebarOpen ? "-left-4" : " -left-7"
+        } absolute  top-1/2 rounded-full border-2 border-gray-500 bg-secondaryLightTheme p-2 font-bold dark:bg-darkGray`}
         onClick={() => setIsSidebarOpen((prev: boolean) => !prev)}
       >
         {isSidebarOpen ? <IoIosArrowForward /> : <IoIosArrowBack />}
       </button>
-      <Tabs defaultValue="insert">
+      <Tabs
+        defaultValue="insert"
+        className={`${!isSidebarOpen ? "hidden" : ""}`}
+      >
         <TabsList className=" w-full dark:bg-darkGray">
           <TabsTrigger value="insert">Insert</TabsTrigger>
           <TabsTrigger value="pages">Pages</TabsTrigger>

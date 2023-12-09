@@ -10,7 +10,9 @@ const Builder = () => {
     <div className="flex w-full">
       <div
         className={`${
-          isSidebarOpen ? "w-[calc(100%_-_16rem)]" : "w-[calc(100%_-_1rem)]"
+          isSidebarOpen
+            ? " w-full md:w-[calc(100%_-_16rem)]"
+            : "w-[calc(100%_-_1rem)]"
         } transition-all ease-out`}
       >
         <Canvas items={items} setItems={setItems} />
