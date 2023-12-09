@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} h-[100dvh] bg-lightTheme dark:bg-darkTheme`}
+        className={`${inter.className} h-[100dvh] w-screen overflow-x-hidden bg-lightTheme dark:bg-darkTheme`}
       >
         <Providers>{children}</Providers>
       </body>

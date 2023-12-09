@@ -1,7 +1,7 @@
 import React from "react";
 
-const Text = () => {
-  return <div>Text</div>;
+const Text = ({ content }: { content: string }) => {
+  return <div>{content}</div>;
 };
 
 export default Text;

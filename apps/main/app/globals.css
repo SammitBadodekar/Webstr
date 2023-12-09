@@ -51,15 +51,6 @@
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-}
-
 ::-webkit-scrollbar {
   width: 0.2rem;
 }
