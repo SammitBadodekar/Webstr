@@ -38,9 +38,20 @@ function SortableItem(props: any) {
           className=" h-full w-8 cursor-grab p-1 text-xl"
           {...listeners}
         />
-        <div className=" flex h-28 w-full items-center justify-center gap-2 rounded-md bg-gray-600 font-bold">
+        <div className=" relative flex h-28 w-full items-center justify-center gap-2 rounded-md bg-gray-400 font-bold dark:bg-gray-600">
           <p>component</p>
           <p>{props.id} </p>
+          <div className="absolute bottom-0 left-0 right-0 top-0 flex items-center justify-center gap-4 rounded-md bg-lightTransparent opacity-0 transition-opacity hover:opacity-100 hover:backdrop-blur dark:bg-darkTransparent">
+            <Button
+              onClick={() => {
+                console.log("clicked");
+                props.setSelectedElement({ id: 1, name: "gfdgfd" });
+              }}
+            >
+              Edit
+            </Button>
+            <Button variant="destructive">Delete</Button>
+          </div>
         </div>
       </div>
     </div>
@@ -50,9 +61,11 @@ function SortableItem(props: any) {
 function Canvas({
   items,
   setItems,
+  setSelectedElement,
 }: {
   items: any[];
   setItems: (props: any) => void;
+  setSelectedElement: (props: any) => void;
 }) {
   const sensors = useSensors(
     useSensor(MouseSensor),
@@ -66,7 +79,11 @@ function Canvas({
         <SortableContext items={items} strategy={verticalListSortingStrategy}>
           <div className=" grid gap-2">
             {items.map((id) => (
-              <SortableItem key={id} id={id} />
+              <SortableItem
+                key={id}
+                id={id}
+                setSelectedElement={setSelectedElement}
+              />
             ))}
           </div>
         </SortableContext>

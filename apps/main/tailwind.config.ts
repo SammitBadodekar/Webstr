@@ -22,6 +22,8 @@ module.exports = {
         darkGray: "#2b2d31",
         lightTheme: "#e3e5e8",
         secondaryLightTheme: "#f2f3f5",
+        darkTransparent: "#151515af",
+        lightTransparent: "#bebebea9",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
