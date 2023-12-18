@@ -69,8 +69,11 @@ const Builder = () => {
             onConnect={onConnect}
             fitView
             attributionPosition="top-right"
-            className=" h-full w-full rounded-md border-2 border-gray-500"
+            className=" relative h-full w-full rounded-md border-2 border-gray-500 "
           >
+            <div className=" absolute right-0 top-0 z-10 bg-secondaryLightTheme p-1 px-3 text-[0.5rem]/[0.5rem] dark:bg-darkGray">
+              webstr
+            </div>
             <Background gap={12} size={1} />
           </ReactFlow>
         </div>
