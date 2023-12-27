@@ -15,9 +15,10 @@ module.exports = {
       { hostname: "pbs.twimg.com" },
       { hostname: "avatar.vercel.sh" },
       { hostname: "avatars.githubusercontent.com" },
+      { hostname: "lh3.googleusercontent.com" },
       { hostname: "www.google.com" },
       { hostname: "flag.vercel.app" },
       { hostname: "illustrations.popsy.co" },
-    ]
+    ],
   },
 };
