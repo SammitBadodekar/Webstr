@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 216, 10%, 90%;
+    --foreground: 225, 6%, 13%;
+
+    --card: 216, 10%, 90%;
+    --card-foreground: 225, 6%, 13%;
+
+    --popover: 220, 13%, 95%;
+    --popover-foreground: 225, 6%, 13%;
+
+    --primary: 225, 6%, 13%;
+    --primary-foreground: 216, 10%, 90%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 225, 6%, 13%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 225, 6%, 13%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 216, 10%, 90%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 225, 6%, 13%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 225, 6%, 13%;
+    --foreground: 216, 10%, 90%;
+
+    --card: 225, 6%, 13%;
+    --card-foreground: 216, 10%, 90%;
+
+    --popover: 220, 7%, 18%;
+    --popover-foreground: 216, 10%, 90%;
+
+    --primary: 216, 10%, 90%;
+    --primary-foreground: 225, 6%, 13%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 216, 10%, 90%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 216, 10%, 90%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 216, 10%, 90%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 0.2rem;
+  height: 0.3rem;
+}
+::-webkit-scrollbar-track {
+  background: #23232300;
+}
+::-webkit-scrollbar-thumb {
+  background: #6c6c6c;
+  border-radius: 4px;
+}
+
+.font-logo {
+  font-family: "Caveat", cursive;
+}
+
+.login {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1008%26quot%3b)' fill='none'%3e%3cpath d='M1239.45 34.01L1250.6 34.01L1250.6 45.16L1239.45 45.16z' stroke='rgba(127%2c 128%2c 137%2c 1)'%3e%3c/path%3e%3cpath d='M14.85 254.91L39.52 254.91L39.52 272.78L14.85 272.78z' stroke='rgba(127%2c 128%2c 137%2c 1)'%3e%3c/path%3e%3cpath d='M807.74 254.58L855.69 254.58L855.69 302.53L807.74 302.53z' stroke='rgba(127%2c 128%2c 137%2c 1)'%3e%3c/path%3e%3cpath d='M364.31 340.29L388.88 340.29L388.88 367.55L364.31 367.55z' stroke='rgba(127%2c 128%2c 137%2c 1)'%3e%3c/path%3e%3cpath d='M1377.95 286.14L1387.38 286.14L1387.38 293.86L1377.95 293.86z' stroke='rgba(127%2c 128%2c 137%2c 1)'%3e%3c/path%3e%3cpath d='M467.55 348.2L490.95 348.2L490.95 371.6L467.55 371.6z' fill='rgba(127%2c 128%2c 137%2c 1)'%3e%3c/path%3e%3cpath d='M985.05 65.7a9.91 9.91 0 1 0 19.62 2.82z' fill='rgba(127%2c 128%2c 137%2c 1)'%3e%3c/path%3e%3cpath d='M479.62 529.92L507.56 529.92L507.56 557.86L479.62 557.86z' stroke='rgba(127%2c 128%2c 137%2c 1)'%3e%3c/path%3e%3cpath d='M1094.19 481.3 a44.59 44.59 0 1 0 89.18 0 a44.59 44.59 0 1 0 -89.18 0z' stroke='rgba(127%2c 128%2c 137%2c 1)'%3e%3c/path%3e%3cpath d='M1.49 245.7 a49.18 49.18 0 1 0 98.36 0 a49.18 49.18 0 1 0 -98.36 0z' stroke='rgba(127%2c 128%2c 137%2c 1)'%3e%3c/path%3e%3cpath d='M930.15 263.87L933.49 263.87L933.49 266.05L930.15 266.05z' fill='rgba(127%2c 128%2c 137%2c 1)'%3e%3c/path%3e%3cpath d='M670.86 197.64a40.61 40.61 0 1 0-73.72-34.1z' fill='rgba(127%2c 128%2c 137%2c 1)'%3e%3c/path%3e%3cpath d='M34.29 353.86 a34.72 34.72 0 1 0 69.44 0 a34.72 34.72 0 1 0 -69.44 0z' fill='rgba(127%2c 128%2c 137%2c 1)'%3e%3c/path%3e%3cpath d='M1094.92 217.31L1149.22 217.31L1149.22 271.61L1094.92 271.61z' stroke='rgba(127%2c 128%2c 137%2c 1)'%3e%3c/path%3e%3cpath d='M1341.51 473.43a41.96 41.96 0 1 0 80.72-22.94z' stroke='rgba(127%2c 128%2c 137%2c 1)'%3e%3c/path%3e%3cpath d='M754.44 489.31a38.72 38.72 0 1 0-70.67-31.68z' stroke='rgba(127%2c 128%2c 137%2c 1)'%3e%3c/path%3e%3cpath d='M1266.3 203.84L1269.32 203.84L1269.32 257.1L1266.3 257.1z' fill='rgba(127%2c 128%2c 137%2c 1)'%3e%3c/path%3e%3cpath d='M541.26 92.53a42.37 42.37 0 1 0-43.13 72.95z' stroke='rgba(127%2c 128%2c 137%2c 1)'%3e%3c/path%3e%3cpath d='M811.35 258.55a40 40 0 1 0 3.43 79.93z' fill='rgba(127%2c 128%2c 137%2c 1)'%3e%3c/path%3e%3cpath d='M644.29 38.01a26.55 26.55 0 1 0 15.77 50.7z' stroke='rgba(127%2c 128%2c 137%2c 1)'%3e%3c/path%3e%3cpath d='M1044.56 528.97 a30.62 30.62 0 1 0 61.24 0 a30.62 30.62 0 1 0 -61.24 0z' stroke='rgba(127%2c 128%2c 137%2c 1)'%3e%3c/path%3e%3cpath d='M984.45 139.15 a29.47 29.47 0 1 0 58.94 0 a29.47 29.47 0 1 0 -58.94 0z' stroke='rgba(127%2c 128%2c 137%2c 1)'%3e%3c/path%3e%3cpath d='M239.69 83.03a37.16 37.16 0 1 0 69.73 25.72z' stroke='rgba(127%2c 128%2c 137%2c 1)'%3e%3c/path%3e%3cpath d='M1001.42 44.01 a55.63 55.63 0 1 0 111.26 0 a55.63 55.63 0 1 0 -111.26 0z' stroke='rgba(127%2c 128%2c 137%2c 1)'%3e%3c/path%3e%3cpath d='M615.79 548.78L621.9 548.78L621.9 592.89L615.79 592.89z' fill='rgba(127%2c 128%2c 137%2c 1)'%3e%3c/path%3e%3cpath d='M348.37 187.53a4.84 4.84 0 1 0 0.65-9.66z' stroke='rgba(127%2c 128%2c 137%2c 1)'%3e%3c/path%3e%3cpath d='M1469.82 376.51a38.07 38.07 0 1 0-74.27-16.77z' stroke='rgba(127%2c 128%2c 137%2c 1)'%3e%3c/path%3e%3cpath d='M1315.36 412.47L1320.68 412.47L1320.68 417.79L1315.36 417.79z' fill='rgba(127%2c 128%2c 137%2c 1)'%3e%3c/path%3e%3cpath d='M247.99 412.16 a9.23 9.23 0 1 0 18.46 0 a9.23 9.23 0 1 0 -18.46 0z' stroke='rgba(127%2c 128%2c 137%2c 1)'%3e%3c/path%3e%3cpath d='M87.74 303.26L90.22 303.26L90.22 334.64L87.74 334.64z' fill='rgba(127%2c 128%2c 137%2c 1)'%3e%3c/path%3e%3cpath d='M1209.46 552.35a39.25 39.25 0 1 0 27.88-73.39z' stroke='rgba(127%2c 128%2c 137%2c 1)'%3e%3c/path%3e%3cpath d='M284.01 251.8L304.51 251.8L304.51 291.59L284.01 291.59z' stroke='rgba(127%2c 128%2c 137%2c 1)'%3e%3c/path%3e%3cpath d='M289.84 491.63a23.38 23.38 0 1 0 38.78-26.12z' stroke='rgba(127%2c 128%2c 137%2c 1)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1008'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
+  background-repeat: repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.background-animate {
+  background-size: 400%;
+
+  -webkit-animation: AnimationName 3s ease infinite;
+  -moz-animation: AnimationName 3s ease infinite;
+  animation: AnimationName 3s ease infinite;
+}
+
+@keyframes AnimationName {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.xs-scrollbar::-webkit-scrollbar {
+  display: none;
+  position: relative;
+}
+
+.xs-scrollbar::after {
+  content: "";
+  position: absolute;
+  background-color: #000000;
+  top: 0;
+}
