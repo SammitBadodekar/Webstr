@@ -4,7 +4,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { BsGoogle } from "react-icons/bs";
 import { SiGmail } from "react-icons/si";
-import { LiaSpinnerSolid } from "react-icons/lia";
 import { FaGithub } from "react-icons/fa";
 import * as z from "zod";
 
@@ -48,13 +47,16 @@ export function LoginForm() {
         loading: "Loading...",
         success: "An Email is sent to your address",
         error: "Something went wrong , please try again",
+        finally() {
+          setIsSubmitting(false);
+        },
       },
     );
   }
 
   return (
     <Form {...form}>
-      <div className=" bg-secondaryLightTheme dark:bg-darkGray flex flex-col gap-4 rounded-xl p-8 shadow-xl">
+      <div className=" flex flex-col gap-4 rounded-xl bg-secondaryLightTheme p-8 shadow-xl dark:bg-darkGray">
         <h1 className=" text-center text-xl font-bold sm:px-8 sm:text-2xl">
           Welcome Back !!
         </h1>
