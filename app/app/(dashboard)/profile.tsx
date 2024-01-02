@@ -30,7 +30,7 @@ const Profile = () => {
           <Skeleton className=" h-8 w-8 rounded-full" />
         )}
       </DropdownMenuTrigger>
-      <DropdownMenuContent className=" bg-secondaryLightTheme dark:bg-darkGray absolute -right-4 top-4 grid w-max gap-2 p-4 font-bold">
+      <DropdownMenuContent className=" absolute -right-4 top-4 grid w-max gap-2 bg-secondaryLightTheme p-4 font-bold dark:bg-darkGray">
         <DropdownMenuLabel className=" flex items-center gap-2">
           <ProfileAvatar src={session?.user?.image!} size={60} />
           <div>
@@ -42,7 +42,7 @@ const Profile = () => {
             </h2>
           </div>
         </DropdownMenuLabel>
-        <DropdownMenuSeparator className=" -mt-2" />
+        <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
           <Link href="/setup-profile">Profile Setting</Link>
         </DropdownMenuItem>

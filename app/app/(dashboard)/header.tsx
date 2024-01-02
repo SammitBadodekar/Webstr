@@ -4,7 +4,11 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Profile from "./profile";
 
-const Header = () => {
+const Header = ({
+  setIsSidebarOpen,
+}: {
+  setIsSidebarOpen: (val: boolean) => void;
+}) => {
   return (
     <div className="sticky top-0 flex items-center gap-2 bg-secondaryLightTheme p-2 px-4 shadow dark:bg-darkGray">
       <Link

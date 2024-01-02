@@ -76,7 +76,7 @@ export default function SetupProfileForm() {
       <div className=" flex h-[100dvh] w-full items-center justify-center">
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className=" bg-secondaryLightTheme dark:bg-darkGray flex flex-col gap-8 rounded-2xl p-6 px-12 shadow-xl"
+          className=" flex flex-col gap-8 rounded-2xl bg-secondaryLightTheme p-6 px-12 shadow-xl dark:bg-darkGray"
         >
           <h1 className=" text-center text-2xl font-bold">Set Your Username</h1>
           <FormField
@@ -95,19 +95,14 @@ export default function SetupProfileForm() {
               </FormItem>
             )}
           />
-          <Button type="submit" disabled={isLoading}>
-            {isLoading ? (
-              <>
-                <div className=" animate-spin">
-                  <LiaSpinnerSolid />
-                </div>
-              </>
-            ) : (
-              <>
-                <span className=" text-lg"></span>
-                Save
-              </>
-            )}
+          <Button
+            type="submit"
+            disabled={
+              isLoading || session?.user?.name === form.getValues("username")
+            }
+          >
+            <span className=" text-lg"></span>
+            Save
           </Button>
         </form>
       </div>
