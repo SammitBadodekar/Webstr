@@ -13,6 +13,7 @@ import ProfileAvatar from "@/components/ui/profile-avatar";
 import { useRecoilState } from "recoil";
 import { homeSidebarState } from "@/app/state/atoms/home-sidebar";
 import { IoCloseSharp } from "react-icons/io5";
+import { usePathname } from "next/navigation";
 
 const Sidebar = () => {
   const { data: session } = useSession();
@@ -105,10 +106,14 @@ const SidebarItem = ({
   title: string;
   href: string;
 }) => {
+  const url = usePathname();
+  const isActive = url === href;
   return (
     <Link
       href={href}
-      className=" flex items-center gap-2 rounded-md p-1 px-2 transition-colors ease-in hover:bg-popover"
+      className={`${
+        isActive ? "bg-popover font-bold transition-all" : ""
+      } flex items-center gap-2 rounded-md p-1 px-2 transition-colors ease-in hover:bg-popover`}
     >
       {children} <p>{title}</p>
     </Link>
