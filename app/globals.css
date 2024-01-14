@@ -77,7 +77,7 @@
 }
 
 ::-webkit-scrollbar {
-  width: 0.2rem;
+  width: 0.3rem;
   height: 0.3rem;
 }
 ::-webkit-scrollbar-track {
@@ -86,6 +86,12 @@
 ::-webkit-scrollbar-thumb {
   background: #6c6c6c;
   border-radius: 4px;
+}
+
+.no-scrollbar::-webkit-scrollbar-thumb {
+  background: #6c6c6c00;
+  width: 0rem;
+  height: 0rem;
 }
 
 .font-logo {
