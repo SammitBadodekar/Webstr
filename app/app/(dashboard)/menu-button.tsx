@@ -4,6 +4,7 @@ import React from "react";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { homeSidebarState } from "@/app/state/atoms/home-sidebar";
 import { useRecoilState } from "recoil";
+import { IoCloseSharp } from "react-icons/io5";
 
 const MenuButton = () => {
   const [isOpen, setIsOpen] = useRecoilState(homeSidebarState);
@@ -14,7 +15,11 @@ const MenuButton = () => {
       variant="secondary"
       onClick={() => setIsOpen((prev) => !prev)}
     >
-      <FaBarsStaggered />
+      {isOpen ? (
+        <IoCloseSharp className="text-2xl text-primary" />
+      ) : (
+        <FaBarsStaggered />
+      )}
     </Button>
   );
 };

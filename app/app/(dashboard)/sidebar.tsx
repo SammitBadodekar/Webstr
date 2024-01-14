@@ -40,8 +40,10 @@ const Sidebar = () => {
     <>
       <div
         className={` ${
-          !isOpen ? "-translate-x-full md:translate-x-0" : "translate-x-0"
-        } fixed top-0 z-10 h-[100dvh] w-72 overflow-y-scroll bg-popover p-2 transition-transform md:static md:z-0 md:h-full md:bg-background`}
+          !isOpen
+            ? "-translate-x-full md:translate-x-0"
+            : "translate-x-0 pt-16 md:pt-0"
+        } fixed top-0 z-20 h-screen w-72 overflow-y-scroll bg-popover p-2 transition-transform md:static md:z-0 md:h-full md:bg-background`}
         ref={modalRef}
       >
         <button
@@ -89,7 +91,7 @@ const Sidebar = () => {
       <div
         className={`${
           isOpen ? "" : "hidden"
-        } absolute top-0 z-0 h-[100dvh] w-screen bg-darkTransparent backdrop-blur-[0.1rem] md:hidden`}
+        } absolute top-0 z-10 h-[100dvh] w-screen bg-darkTransparent backdrop-blur-[0.1rem] md:hidden`}
       ></div>
     </>
   );
@@ -106,13 +108,15 @@ const SidebarItem = ({
   title: string;
   href: string;
 }) => {
+  const [isOpen, setIsOpen] = useRecoilState(homeSidebarState);
   const url = usePathname();
   const isActive = url === href;
   return (
     <Link
+      onClick={() => setIsOpen(false)}
       href={href}
       className={`${
-        isActive ? "bg-popover font-bold transition-all" : ""
+        isActive ? "bg-background font-bold transition-all md:bg-popover" : ""
       } flex items-center gap-2 rounded-md p-1 px-2 transition-colors ease-in hover:bg-popover`}
     >
       {children} <p>{title}</p>
