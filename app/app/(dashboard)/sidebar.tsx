@@ -111,6 +111,7 @@ const SidebarItem = ({
   const [isOpen, setIsOpen] = useRecoilState(homeSidebarState);
   const url = usePathname();
   const isActive = url === href;
+  console.log(isActive, url , href)
   return (
     <Link
       onClick={() => setIsOpen(false)}
