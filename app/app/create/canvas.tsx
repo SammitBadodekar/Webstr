@@ -26,7 +26,7 @@ import {
 // Components
 import Container from "@/components/Container";
 import Items from "@/components/Item";
-import Modal from "@/components/modal";
+import Modal from "./Modal";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
