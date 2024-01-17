@@ -60,6 +60,7 @@ const Sidebar = () => {
           <p className=" text-sm font-semibold">Free Tier</p>
         </div>
         <Link
+          onClick={() => setIsOpen(false)}
           href="/pro"
           className=" mb-4 flex w-full items-center justify-center gap-2 rounded-md bg-background p-2 font-bold transition-colors ease-in hover:bg-white dark:hover:bg-gray-700 md:bg-popover"
         >
@@ -111,7 +112,6 @@ const SidebarItem = ({
   const [isOpen, setIsOpen] = useRecoilState(homeSidebarState);
   const url = usePathname();
   const isActive = url === href;
-  console.log(isActive, url , href)
   return (
     <Link
       onClick={() => setIsOpen(false)}

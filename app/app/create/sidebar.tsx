@@ -4,18 +4,18 @@ import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Separator } from "@/components/ui/separator";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-
-let counter = 1;
+import { DNDType } from "./canvas";
+import { v4 as uuidv4 } from "uuid";
 
 const Sidebar = ({
-  items,
-  setItems,
+  containers,
+  setContainers,
 }: {
-  items: any[];
-  setItems: (props: any) => void;
+  containers: DNDType[];
+  setContainers: Function;
 }) => {
   const addItem = (item: any) => {
-    setItems((prev: any) => [item, ...prev]);
+    setContainers((prev: any) => [item, ...prev]);
   };
 
   return (
@@ -34,8 +34,16 @@ const Sidebar = ({
             variant="outline"
             className=" m-8"
             onClick={() => {
-              addItem(counter + 1);
-              counter++;
+              addItem({
+                id: `container-${uuidv4()}`,
+                title: "fkdjghfjghfd",
+                items: [
+                  {
+                    id: `item-${uuidv4()}`,
+                    title: "ouiouiouioui",
+                  },
+                ],
+              });
             }}
           >
             Add Element

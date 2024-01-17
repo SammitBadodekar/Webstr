@@ -15,7 +15,7 @@ import { Button } from "@/components/ui/button";
 export default async function Home() {
   return (
     <>
-      <div className="flex h-64 w-full flex-col items-center justify-around gap-0 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-500 to-blue-700 text-lightTheme dark:via-blue-800 dark:to-blue-900 md:gap-4 md:p-4">
+      <div className="flex h-64 w-full flex-col items-center justify-around gap-0 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-500 to-blue-700 text-lightTheme dark:via-blue-800 dark:to-blue-900 md:gap-4">
         <h2 className="text-2xl font-semibold md:text-4xl">
           What will you use today?
         </h2>
@@ -27,7 +27,7 @@ export default async function Home() {
           <GrSearchAdvanced className="absolute left-2 top-3" />
         </div>
 
-        <div className="no-scrollbar -my-2 flex w-full justify-around overflow-x-scroll p-1 md:my-0">
+        <div className="no-scrollbar -my-2 flex w-11/12 flex-nowrap justify-around overflow-x-scroll p-1 md:my-0">
           <Item text="AI site maker" link="/">
             <RiBardFill className="text-xl text-blue-500" />
           </Item>
