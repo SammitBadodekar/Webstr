@@ -1,6 +1,6 @@
 "use client";
 import Sidebar from "./sidebar";
-import Canvas from "./canvas";
+import Canvas, { DNDType } from "./canvas";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import {
   ResizableHandle,
@@ -10,7 +10,28 @@ import {
 import { PiSpinnerGapThin } from "react-icons/pi";
 
 const Builder = () => {
-  const [items, setItems] = useState([1]);
+  const [containers, setContainers] = useState<DNDType[]>([
+    {
+      id: "container-fdsfysdfhds_fjsdfhsdg_fsd",
+      title: "fkdjghfjghfd",
+      items: [
+        {
+          id: "item-cb84a724-f9e3-4c6f-b2ea-7001be3e91f6",
+          title: "ouiouiouioui",
+        },
+      ],
+    },
+    {
+      id: "container-fdhgfhgfhfsfysdfhds_fjsdfhsdg_fsd",
+      title: "fkdjghfgfdgfdgfjghfd",
+      items: [
+        {
+          id: "item-cbfgdfgfdg84a724-f9e3-4c6f-b2ea-7001be3e91f6",
+          title: "oufg",
+        },
+      ],
+    },
+  ]);
   const [containerWidth, setContainerWidth] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -35,14 +56,14 @@ const Builder = () => {
               defaultSize={containerWidth > 800 ? 80 : 60}
               className="h-full w-full"
             >
-              <Canvas items={items} setItems={setItems} />
+              <Canvas containers={containers} setContainers={setContainers} />
             </ResizablePanel>
             <ResizableHandle withHandle />
             <ResizablePanel
               defaultSize={containerWidth > 800 ? 20 : 40}
               className="h-full w-full"
             >
-              <Sidebar items={items} setItems={setItems} />
+              <Sidebar containers={containers} setContainers={setContainers} />
             </ResizablePanel>
           </ResizablePanelGroup>
         </>

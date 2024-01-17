@@ -8,7 +8,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
       <Header />
       <div className="flex h-full w-full overflow-hidden">
         <Sidebar />
-        <div className="flex h-full w-full flex-col gap-8 overflow-y-scroll p-4 pl-0">
+        <div className="flex h-full w-full flex-col gap-8 overflow-y-scroll p-4 md:pl-0">
           {children}
         </div>
       </div>
