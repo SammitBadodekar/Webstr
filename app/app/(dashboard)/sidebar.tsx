@@ -19,6 +19,7 @@ const Sidebar = () => {
   const { data: session } = useSession();
   const [isOpen, setIsOpen] = useRecoilState(homeSidebarState);
   const modalRef = useRef<HTMLDivElement>(null);
+  const url = usePathname();
 
   useEffect(() => {
     const handleClickOutside = (e: any) => {
@@ -71,20 +72,32 @@ const Sidebar = () => {
           <p>Get Webstr Pro</p>
         </Link>
         <div className=" grid gap-1">
-          <SidebarItem href="/" title="Home">
+          <SidebarItem href="/" title="Home" isActive={url === "/"}>
             <CiHome />
           </SidebarItem>
-          <SidebarItem href="/projects" title="Projects">
+          <SidebarItem
+            href="/projects"
+            title="Projects"
+            isActive={url === "/projects"}
+          >
             <VscFileSubmodule />
           </SidebarItem>
-          <SidebarItem href="/templates" title="Templates">
+          <SidebarItem
+            href="/templates"
+            title="Templates"
+            isActive={url === "/templates"}
+          >
             <LuLayoutTemplate />
           </SidebarItem>
-          <SidebarItem href="/create-team" title="Create a team">
+          <SidebarItem
+            href="/create-team"
+            title="Create a team"
+            isActive={url === "/create-team"}
+          >
             <BsBuildings />
           </SidebarItem>
           <div className=" my-2 h-[0.1rem] w-full bg-slate-300 dark:bg-slate-600 "></div>
-          <SidebarItem href="/trash" title="Trash">
+          <SidebarItem href="/trash" title="Trash" isActive={url === "/trash"}>
             <RiDeleteBin5Line />
           </SidebarItem>
         </div>
@@ -104,14 +117,14 @@ const SidebarItem = ({
   children,
   title,
   href,
+  isActive,
 }: {
   children: React.ReactNode;
   title: string;
   href: string;
+  isActive: boolean;
 }) => {
   const [isOpen, setIsOpen] = useRecoilState(homeSidebarState);
-  const url = usePathname();
-  const isActive = url === href;
   return (
     <Link
       onClick={() => setIsOpen(false)}
