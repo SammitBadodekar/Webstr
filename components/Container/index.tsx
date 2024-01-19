@@ -1,9 +1,13 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import ContainerProps from "./container.type";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import clsx from "clsx";
+import { RxDragHandleDots2 } from "react-icons/rx";
 import { Button } from "../ui/button";
+import { MdOutlineDeleteOutline } from "react-icons/md";
+import { DNDType } from "@/app/app/create/canvas";
 
 const Container = ({
   id,
@@ -11,6 +15,7 @@ const Container = ({
   title,
   description,
   onAddItem,
+  setContainers,
 }: ContainerProps) => {
   const {
     attributes,
@@ -25,37 +30,45 @@ const Container = ({
       type: "container",
     },
   });
+
+  const [isHovered, setIsHovered] = useState(false);
   return (
     <div
       {...attributes}
       ref={setNodeRef}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       style={{
         transition,
         transform: CSS.Translate.toString(transform),
       }}
       className={clsx(
-        "flex h-full w-full items-center gap-4 rounded-xl bg-popover p-4 text-primary",
-        isDragging && "opacity-50",
+        "relative flex h-full w-full cursor-default items-center gap-4 bg-background px-8 text-primary",
+        isDragging && "z-50",
+        isHovered && "border-2 border-primary",
       )}
     >
-      <div className="flex items-center justify-between">
-        <div className="flex flex-col gap-y-1">
-          {/*  <h1 className="text-xl ">{title}</h1>
-          <p className="text-sm ">{description}</p> */}
-        </div>
+      <div
+        className={`${
+          isHovered ? "hover:opacity-100" : "opacity-0"
+        } absolute flex h-full w-full items-center justify-start`}
+      >
+        <button className=" cursor-grab text-xl" {...listeners}>
+          <RxDragHandleDots2 />
+        </button>
         <button
-          className="rounded-xl border p-2 text-xs shadow-lg hover:shadow-xl"
-          {...listeners}
+          className="ml-auto mr-12 rounded-full bg-destructive p-1"
+          onClick={() =>
+            setContainers((prev: DNDType[]) =>
+              prev.filter((element) => element.id !== id),
+            )
+          }
         >
-          Drag Handle
+          <MdOutlineDeleteOutline className="text-xl" />
         </button>
       </div>
 
-      <div className="h-full w-full">{children}</div>
-
-      <Button variant="ghost" onClick={onAddItem}>
-        Add Item
-      </Button>
+      <div className={`h-full w-full p-4 px-8`}>{children}</div>
     </div>
   );
 };

@@ -26,9 +26,6 @@ import {
 // Components
 import Container from "@/components/Container";
 import Items from "@/components/Item";
-import Modal from "./Modal";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 
 export type DNDType = {
   id: UniqueIdentifier;
@@ -47,41 +44,6 @@ export default function Canvas({
   setContainers: Function;
 }) {
   const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null);
-  const [currentContainerId, setCurrentContainerId] =
-    useState<UniqueIdentifier>();
-  const [containerName, setContainerName] = useState("");
-  const [itemName, setItemName] = useState("");
-  const [showAddContainerModal, setShowAddContainerModal] = useState(false);
-  const [showAddItemModal, setShowAddItemModal] = useState(false);
-
-  const onAddContainer = () => {
-    if (!containerName) return;
-    const id = `container-${uuidv4()}`;
-    setContainers([
-      ...containers,
-      {
-        id,
-        title: containerName,
-        items: [],
-      },
-    ]);
-    setContainerName("");
-    setShowAddContainerModal(false);
-  };
-
-  const onAddItem = () => {
-    if (!itemName) return;
-    const id = `item-${uuidv4()}`;
-    const container = containers.find((item) => item.id === currentContainerId);
-    if (!container) return;
-    container.items.push({
-      id,
-      title: itemName,
-    });
-    setContainers([...containers]);
-    setItemName("");
-    setShowAddItemModal(false);
-  };
 
   // Find the value of the items
   function findValueOfItems(id: UniqueIdentifier | undefined, type: string) {
@@ -344,8 +306,8 @@ export default function Canvas({
   }
 
   return (
-    <div className="grid h-full w-full ">
-      {/* Add Container Modal */}
+    <div className="grid h-full w-full overflow-scroll">
+      {/* Add Container Modal 
       <Modal
         showModal={showAddContainerModal}
         setShowModal={setShowAddContainerModal}
@@ -361,8 +323,8 @@ export default function Canvas({
           />
           <Button onClick={onAddContainer}>Add container</Button>
         </div>
-      </Modal>
-      {/* Add Item Modal */}
+      </Modal>*/}
+      {/* Add Item Modal 
       <Modal showModal={showAddItemModal} setShowModal={setShowAddItemModal}>
         <div className="flex w-full flex-col items-start gap-y-4">
           <Input
@@ -374,14 +336,16 @@ export default function Canvas({
           />
           <Button onClick={onAddItem}>Add Item</Button>
         </div>
-      </Modal>
-      <div className="flex items-center justify-between gap-y-2">
+      </Modal>*/}
+
+      {/* <div className="flex items-center justify-between gap-y-2">
         <Button onClick={() => setShowAddContainerModal(true)}>
           Add Container
         </Button>
-      </div>
+      </div> */}
+
       <div className="">
-        <div className="grid gap-6 p-4">
+        <div className="grid">
           <DndContext
             sensors={sensors}
             collisionDetection={closestCorners}
@@ -395,10 +359,7 @@ export default function Canvas({
                   id={container.id}
                   title={container.title}
                   key={container.id}
-                  onAddItem={() => {
-                    setShowAddItemModal(true);
-                    setCurrentContainerId(container.id);
-                  }}
+                  setContainers={setContainers}
                 >
                   <div className="h-fit">
                     <SortableContext items={container.items.map((i) => i.id)}>
@@ -412,12 +373,11 @@ export default function Canvas({
                 </Container>
               ))}
             </SortableContext>
-            <DragOverlay adjustScale={false}>
-              {/* Drag Overlay For item Item */}
+            {/* <DragOverlay adjustScale={false}>
               {activeId && activeId.toString().includes("item") && (
                 <Items id={activeId} title={findItemTitle(activeId)} />
               )}
-              {/* Drag Overlay For Container */}
+        
               {activeId && activeId.toString().includes("container") && (
                 <Container id={activeId} title={findContainerTitle(activeId)}>
                   {findContainerItems(activeId).map((i) => (
@@ -425,7 +385,7 @@ export default function Canvas({
                   ))}
                 </Container>
               )}
-            </DragOverlay>
+            </DragOverlay> */}
           </DndContext>
         </div>
       </div>

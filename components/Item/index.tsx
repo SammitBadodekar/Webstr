@@ -1,8 +1,11 @@
-import { UniqueIdentifier } from '@dnd-kit/core';
-import { useSortable } from '@dnd-kit/sortable';
-import React from 'react';
-import { CSS } from '@dnd-kit/utilities';
-import clsx from 'clsx';
+"use client";
+
+import { UniqueIdentifier } from "@dnd-kit/core";
+import { useSortable } from "@dnd-kit/sortable";
+import React from "react";
+import { CSS } from "@dnd-kit/utilities";
+import clsx from "clsx";
+import { RxDragHandleDots2 } from "react-icons/rx";
 
 type ItemsType = {
   id: UniqueIdentifier;
@@ -20,7 +23,7 @@ const Items = ({ id, title }: ItemsType) => {
   } = useSortable({
     id: id,
     data: {
-      type: 'item',
+      type: "item",
     },
   });
   return (
@@ -32,19 +35,16 @@ const Items = ({ id, title }: ItemsType) => {
         transform: CSS.Translate.toString(transform),
       }}
       className={clsx(
-        'px-2 py-4 bg-white shadow-md rounded-xl w-full border border-transparent hover:border-gray-200 cursor-pointer',
-        isDragging && 'opacity-50',
+        "relative w-full cursor-default bg-popover p-4 shadow-md",
+        isDragging && "z-50",
       )}
     >
-      <div className="flex items-center justify-between">
-        {title}
-        <button
-          className="border p-2 text-xs rounded-xl shadow-lg hover:shadow-xl"
-          {...listeners}
-        >
-          Drag Handle
+      <div className="absolute bottom-0 left-0 right-0 top-0 flex  items-start justify-center opacity-0 hover:opacity-100">
+        <button className="rotate-90 cursor-grab text-xl" {...listeners}>
+          <RxDragHandleDots2 />
         </button>
       </div>
+      <div className="flex items-center justify-between">{title}</div>
     </div>
   );
 };

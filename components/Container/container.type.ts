@@ -1,4 +1,4 @@
-import { UniqueIdentifier } from '@dnd-kit/core';
+import { UniqueIdentifier } from "@dnd-kit/core";
 
 export default interface ContainerProps {
   id: UniqueIdentifier;
@@ -6,4 +6,5 @@ export default interface ContainerProps {
   title?: string;
   description?: string;
   onAddItem?: () => void;
+  setContainers: Function;
 }

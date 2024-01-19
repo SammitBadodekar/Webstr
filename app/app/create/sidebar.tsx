@@ -36,11 +36,11 @@ const Sidebar = ({
             onClick={() => {
               addItem({
                 id: `container-${uuidv4()}`,
-                title: "fkdjghfjghfd",
+                title: "div",
                 items: [
                   {
                     id: `item-${uuidv4()}`,
-                    title: "ouiouiouioui",
+                    title: "component",
                   },
                 ],
               });
