@@ -112,6 +112,7 @@ const SidebarItem = ({
 }) => {
   const [isOpen, setIsOpen] = useRecoilState(homeSidebarState);
   const url = usePathname();
+  console.log(url);
 
   if (url)
     return (
