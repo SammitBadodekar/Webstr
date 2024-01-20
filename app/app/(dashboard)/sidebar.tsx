@@ -71,36 +71,42 @@ const Sidebar = () => {
 
           <p>Get Webstr Pro</p>
         </Link>
-        <div className=" grid gap-1">
-          <SidebarItem href="/" title="Home" isActive={url === "/"}>
-            <CiHome />
-          </SidebarItem>
-          <SidebarItem
-            href="/projects"
-            title="Projects"
-            isActive={url === "/projects"}
-          >
-            <VscFileSubmodule />
-          </SidebarItem>
-          <SidebarItem
-            href="/templates"
-            title="Templates"
-            isActive={url === "/templates"}
-          >
-            <LuLayoutTemplate />
-          </SidebarItem>
-          <SidebarItem
-            href="/create-team"
-            title="Create a team"
-            isActive={url === "/create-team"}
-          >
-            <BsBuildings />
-          </SidebarItem>
-          <div className=" my-2 h-[0.1rem] w-full bg-slate-300 dark:bg-slate-600 "></div>
-          <SidebarItem href="/trash" title="Trash" isActive={url === "/trash"}>
-            <RiDeleteBin5Line />
-          </SidebarItem>
-        </div>
+        {url && (
+          <div className=" grid gap-1">
+            <SidebarItem href="/" title="Home" isActive={url === "/"}>
+              <CiHome />
+            </SidebarItem>
+            <SidebarItem
+              href="/projects"
+              title="Projects"
+              isActive={url === "/projects"}
+            >
+              <VscFileSubmodule />
+            </SidebarItem>
+            <SidebarItem
+              href="/templates"
+              title="Templates"
+              isActive={url === "/templates"}
+            >
+              <LuLayoutTemplate />
+            </SidebarItem>
+            <SidebarItem
+              href="/create-team"
+              title="Create a team"
+              isActive={url === "/create-team"}
+            >
+              <BsBuildings />
+            </SidebarItem>
+            <div className=" my-2 h-[0.1rem] w-full bg-slate-300 dark:bg-slate-600 "></div>
+            <SidebarItem
+              href="/trash"
+              title="Trash"
+              isActive={url === "/trash"}
+            >
+              <RiDeleteBin5Line />
+            </SidebarItem>
+          </div>
+        )}
       </div>
       <div
         className={`${
