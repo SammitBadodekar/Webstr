@@ -43,9 +43,8 @@ const Container = ({
         transform: CSS.Translate.toString(transform),
       }}
       className={clsx(
-        "relative flex h-full w-full cursor-default items-center gap-4 bg-background px-8 text-primary",
+        "relative flex h-full w-full cursor-default items-center gap-4 bg-background px-4 text-primary",
         isDragging && "z-50",
-        isHovered && "border-2 border-primary",
       )}
     >
       <div
@@ -57,7 +56,7 @@ const Container = ({
           <RxDragHandleDots2 />
         </button>
         <button
-          className="ml-auto mr-12 rounded-full bg-destructive p-1"
+          className="ml-auto mr-8 rounded-full bg-destructive p-1"
           onClick={() =>
             setContainers((prev: DNDType[]) =>
               prev.filter((element) => element.id !== id),
@@ -68,7 +67,11 @@ const Container = ({
         </button>
       </div>
 
-      <div className={`h-full w-full p-4 px-8`}>{children}</div>
+      <div className={` h-full w-full p-2 px-8`}>
+        <div className={`${isHovered && "border-2 border-primary"} p-2`}>
+          {children}
+        </div>
+      </div>
     </div>
   );
 };
