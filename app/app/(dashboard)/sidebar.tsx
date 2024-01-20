@@ -19,7 +19,6 @@ const Sidebar = () => {
   const { data: session } = useSession();
   const [isOpen, setIsOpen] = useRecoilState(homeSidebarState);
   const modalRef = useRef<HTMLDivElement>(null);
-  const url = usePathname();
 
   useEffect(() => {
     const handleClickOutside = (e: any) => {
@@ -71,42 +70,25 @@ const Sidebar = () => {
 
           <p>Get Webstr Pro</p>
         </Link>
-        {url && (
-          <div className=" grid gap-1">
-            <SidebarItem href="/" title="Home" isActive={url === "/"}>
-              <CiHome />
-            </SidebarItem>
-            <SidebarItem
-              href="/projects"
-              title="Projects"
-              isActive={url === "/projects"}
-            >
-              <VscFileSubmodule />
-            </SidebarItem>
-            <SidebarItem
-              href="/templates"
-              title="Templates"
-              isActive={url === "/templates"}
-            >
-              <LuLayoutTemplate />
-            </SidebarItem>
-            <SidebarItem
-              href="/create-team"
-              title="Create a team"
-              isActive={url === "/create-team"}
-            >
-              <BsBuildings />
-            </SidebarItem>
-            <div className=" my-2 h-[0.1rem] w-full bg-slate-300 dark:bg-slate-600 "></div>
-            <SidebarItem
-              href="/trash"
-              title="Trash"
-              isActive={url === "/trash"}
-            >
-              <RiDeleteBin5Line />
-            </SidebarItem>
-          </div>
-        )}
+
+        <div className=" grid gap-1">
+          <SidebarItem href="/" title="Home">
+            <CiHome />
+          </SidebarItem>
+          <SidebarItem href="/projects" title="Projects">
+            <VscFileSubmodule />
+          </SidebarItem>
+          <SidebarItem href="/templates" title="Templates">
+            <LuLayoutTemplate />
+          </SidebarItem>
+          <SidebarItem href="/create-team" title="Create a team">
+            <BsBuildings />
+          </SidebarItem>
+          <div className=" my-2 h-[0.1rem] w-full bg-slate-300 dark:bg-slate-600 "></div>
+          <SidebarItem href="/trash" title="Trash">
+            <RiDeleteBin5Line />
+          </SidebarItem>
+        </div>
       </div>
       <div
         className={`${
@@ -123,20 +105,21 @@ const SidebarItem = ({
   children,
   title,
   href,
-  isActive,
 }: {
   children: React.ReactNode;
   title: string;
   href: string;
-  isActive: boolean;
 }) => {
   const [isOpen, setIsOpen] = useRecoilState(homeSidebarState);
+  const url = usePathname();
   return (
     <Link
       onClick={() => setIsOpen(false)}
       href={href}
       className={`${
-        isActive ? "bg-background font-bold transition-all md:bg-popover" : ""
+        url === href
+          ? "bg-background font-bold transition-all md:bg-popover"
+          : ""
       } flex items-center gap-2 rounded-md p-1 px-2 transition-colors ease-in hover:bg-popover`}
     >
       {children} <p>{title}</p>
