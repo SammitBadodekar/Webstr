@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { FaCrown } from "react-icons/fa";
 import { CiHome } from "react-icons/ci";
@@ -112,17 +112,19 @@ const SidebarItem = ({
 }) => {
   const [isOpen, setIsOpen] = useRecoilState(homeSidebarState);
   const url = usePathname();
-  return (
-    <Link
-      onClick={() => setIsOpen(false)}
-      href={href}
-      className={`${
-        url === href
-          ? "bg-background font-bold transition-all md:bg-popover"
-          : ""
-      } flex items-center gap-2 rounded-md p-1 px-2 transition-colors ease-in hover:bg-popover`}
-    >
-      {children} <p>{title}</p>
-    </Link>
-  );
+
+  if (url)
+    return (
+      <Link
+        onClick={() => setIsOpen(false)}
+        href={href}
+        className={`${
+          url === href
+            ? "bg-background font-bold transition-all md:bg-popover"
+            : ""
+        } flex items-center gap-2 rounded-md p-1 px-2 transition-colors ease-in hover:bg-popover`}
+      >
+        {children} <p>{title}</p>
+      </Link>
+    );
 };
