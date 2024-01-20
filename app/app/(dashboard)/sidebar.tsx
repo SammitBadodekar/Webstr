@@ -13,7 +13,7 @@ import ProfileAvatar from "@/components/ui/profile-avatar";
 import { useRecoilState } from "recoil";
 import { homeSidebarState } from "@/app/state/atoms/home-sidebar";
 import { IoCloseSharp } from "react-icons/io5";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const Sidebar = () => {
   const { data: session } = useSession();
@@ -112,7 +112,11 @@ const SidebarItem = ({
 }) => {
   const [isOpen, setIsOpen] = useRecoilState(homeSidebarState);
   const url = usePathname();
-  console.log(url);
+  const router = useRouter();
+
+  useEffect(() => {
+    router.push(url);
+  }, []);
 
   if (url)
     return (
