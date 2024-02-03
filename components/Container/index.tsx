@@ -7,7 +7,6 @@ import clsx from "clsx";
 import { RxDragHandleDots2 } from "react-icons/rx";
 import { Button } from "../ui/button";
 import { MdOutlineDeleteOutline } from "react-icons/md";
-import { DNDType } from "@/app/app/create/canvas";
 
 const Container = ({
   id,
@@ -58,8 +57,8 @@ const Container = ({
         <button
           className="ml-auto mr-8 rounded-full bg-destructive p-1"
           onClick={() =>
-            setContainers((prev: DNDType[]) =>
-              prev.filter((element) => element.id !== id),
+            setContainers((prev: any) =>
+              prev.filter((element: any) => element.id !== id),
             )
           }
         >

@@ -4,18 +4,27 @@ import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Separator } from "@/components/ui/separator";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { DNDType } from "./canvas";
 import { v4 as uuidv4 } from "uuid";
+import { OutputData } from "@editorjs/editorjs";
 
 const Sidebar = ({
   containers,
   setContainers,
 }: {
-  containers: DNDType[];
+  containers: OutputData;
   setContainers: Function;
 }) => {
+  console.log(containers?.blocks);
+
   const addItem = (item: any) => {
-    setContainers((prev: any) => [item, ...prev]);
+    setContainers((prev: OutputData) => {
+      const newBlocks = [...prev?.blocks];
+      newBlocks.push(item);
+      return {
+        blocks: newBlocks,
+        time: prev.time,
+      };
+    });
   };
 
   return (
@@ -30,24 +39,22 @@ const Sidebar = ({
         </TabsList>
         <Separator className=" my-1 bg-slate-500" />
         <TabsContent value="insert">
-          <Button
+          {/*  <Button
             variant="outline"
             className=" m-8"
             onClick={() => {
               addItem({
-                id: `container-${uuidv4()}`,
-                title: "div",
-                items: [
-                  {
-                    id: `item-${uuidv4()}`,
-                    title: "component",
-                  },
-                ],
+                id: `${uuidv4()}`,
+                type: "paragraph",
+                data: {
+                  text: "fgfgfdg",
+                },
               });
             }}
           >
             Add Element
-          </Button>
+          </Button> */}
+          coming soon
         </TabsContent>
         <TabsContent value="pages">Change your pages here.</TabsContent>
       </Tabs>

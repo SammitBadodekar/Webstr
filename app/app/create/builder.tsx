@@ -1,6 +1,6 @@
 "use client";
 import Sidebar from "./sidebar";
-import Canvas, { DNDType } from "./canvas";
+import Editor from "./canvas";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import {
   ResizableHandle,
@@ -8,32 +8,28 @@ import {
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
 import { PiSpinnerGapThin } from "react-icons/pi";
+import { OutputData } from "@editorjs/editorjs";
 
 const Builder = () => {
-  const [containers, setContainers] = useState<DNDType[]>([
-    {
-      id: "container-fdsfysdfhds_fjsdfhsdg_fsd",
-      title: "fkdjghfjghfd",
-      items: [
-        {
-          id: "item-cb84a724-f9e3-4c6f-b2ea-7001be3e91f6",
-          title: "ouiouiouioui",
-        },
-      ],
-    },
-    {
-      id: "container-fdhgfhgfhfsfysdfhds_fjsdfhsdg_fsd",
-      title: "fkdjghfgfdgfdgfjghfd",
-      items: [
-        {
-          id: "item-cbfgdfgfdg84a724-f9e3-4c6f-b2ea-7001be3e91f6",
-          title: "oufg",
-        },
-      ],
-    },
-  ]);
+  const [containers, setContainers] = useState<OutputData>();
+  const [mounted, setMounted] = useState(false);
   const [containerWidth, setContainerWidth] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  console.log(containers);
+
+  useEffect(() => {
+    const items = localStorage.getItem("items");
+    console.log(items);
+    setContainers(items);
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (containers) {
+      localStorage.setItem("items", JSON.stringify(containers));
+    }
+  }, [containers]);
 
   useEffect(() => {
     // Access the size here
@@ -56,14 +52,20 @@ const Builder = () => {
               defaultSize={containerWidth > 800 ? 80 : 60}
               className="h-full w-full"
             >
-              <Canvas containers={containers} setContainers={setContainers} />
+              {mounted && (
+                <Editor
+                  data={containers}
+                  onChange={setContainers}
+                  holder="editorjs"
+                />
+              )}
             </ResizablePanel>
             <ResizableHandle withHandle />
             <ResizablePanel
               defaultSize={containerWidth > 800 ? 20 : 40}
               className="h-full w-full"
             >
-              <Sidebar containers={containers} setContainers={setContainers} />
+              <Sidebar containers={containers!} setContainers={setContainers} />
             </ResizablePanel>
           </ResizablePanelGroup>
         </>
