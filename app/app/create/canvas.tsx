@@ -40,7 +40,7 @@ const Editor: React.FC<EditorProps> = ({ data, onChange, holder }) => {
     };
   }, []);
 
-  return <div id={holder} className="prose max-w-full" />;
+  return <div id={holder} className="prose max-w-full overflow-y-scroll" />;
 };
 
 export default Editor;

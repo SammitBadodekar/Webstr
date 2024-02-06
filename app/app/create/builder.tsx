@@ -21,8 +21,6 @@ const Builder = () => {
   useEffect(() => {
     const items = localStorage.getItem("items");
     console.log(items);
-    setContainers(items);
-    setMounted(true);
   }, []);
 
   useEffect(() => {
@@ -50,7 +48,7 @@ const Builder = () => {
           >
             <ResizablePanel
               defaultSize={containerWidth > 800 ? 80 : 60}
-              className="h-full w-full"
+              className="h-full w-full overflow-y-scroll"
             >
               {mounted && (
                 <Editor
