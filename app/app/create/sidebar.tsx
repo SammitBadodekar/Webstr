@@ -1,30 +1,18 @@
-"use client";
-import { Button } from "@/components/ui/button";
-import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Separator } from "@/components/ui/separator";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { DNDType } from "./canvas";
 import { v4 as uuidv4 } from "uuid";
-import { OutputData } from "@editorjs/editorjs";
+import { Button } from "@/components/ui/button";
 
 const Sidebar = ({
   containers,
   setContainers,
 }: {
-  containers: OutputData;
+  containers: DNDType[];
   setContainers: Function;
 }) => {
-  console.log(containers?.blocks);
-
   const addItem = (item: any) => {
-    setContainers((prev: OutputData) => {
-      const newBlocks = [...prev?.blocks];
-      newBlocks.push(item);
-      return {
-        blocks: newBlocks,
-        time: prev.time,
-      };
-    });
+    setContainers((prev: any) => [item, ...prev]);
   };
 
   return (
@@ -39,27 +27,28 @@ const Sidebar = ({
         </TabsList>
         <Separator className=" my-1 bg-slate-500" />
         <TabsContent value="insert">
-          {/*  <Button
+          <Button
             variant="outline"
             className=" m-8"
             onClick={() => {
               addItem({
-                id: `${uuidv4()}`,
-                type: "paragraph",
-                data: {
-                  text: "fgfgfdg",
-                },
+                id: `container-${uuidv4()}`,
+                title: "div",
+                items: [
+                  {
+                    id: `item-${uuidv4()}`,
+                    title: "component",
+                  },
+                ],
               });
             }}
           >
             Add Element
-          </Button> */}
-          coming soon
+          </Button>
         </TabsContent>
         <TabsContent value="pages">Change your pages here.</TabsContent>
       </Tabs>
     </div>
   );
 };
-
 export default Sidebar;
