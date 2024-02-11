@@ -1,7 +1,5 @@
 "use client";
 import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
-
 // DnD
 import {
   DndContext,
@@ -33,6 +31,7 @@ export type DNDType = {
   items: {
     id: UniqueIdentifier;
     title: string;
+    component: string;
   }[];
 };
 
@@ -307,43 +306,6 @@ export default function Canvas({
 
   return (
     <div className="grid h-full w-full overflow-scroll">
-      {/* Add Container Modal 
-      <Modal
-        showModal={showAddContainerModal}
-        setShowModal={setShowAddContainerModal}
-      >
-        <div className="flex w-full flex-col items-start gap-y-4">
-          <h1 className="text-3xl font-bold text-gray-800">Add Container</h1>
-          <Input
-            type="text"
-            placeholder="Container Title"
-            name="containername"
-            value={containerName}
-            onChange={(e) => setContainerName(e.target.value)}
-          />
-          <Button onClick={onAddContainer}>Add container</Button>
-        </div>
-      </Modal>*/}
-      {/* Add Item Modal 
-      <Modal showModal={showAddItemModal} setShowModal={setShowAddItemModal}>
-        <div className="flex w-full flex-col items-start gap-y-4">
-          <Input
-            type="text"
-            placeholder="Item Title"
-            name="itemname"
-            value={itemName}
-            onChange={(e) => setItemName(e.target.value)}
-          />
-          <Button onClick={onAddItem}>Add Item</Button>
-        </div>
-      </Modal>*/}
-
-      {/* <div className="flex items-center justify-between gap-y-2">
-        <Button onClick={() => setShowAddContainerModal(true)}>
-          Add Container
-        </Button>
-      </div> */}
-
       <div className="">
         <div className="grid">
           <DndContext
@@ -365,7 +327,12 @@ export default function Canvas({
                     <SortableContext items={container.items.map((i) => i.id)}>
                       <div className="flex gap-4">
                         {container.items.map((i) => (
-                          <Items title={i.title} id={i.id} key={i.id} />
+                          <Items
+                            component={i.component}
+                            title={i.title}
+                            id={i.id}
+                            key={i.id}
+                          />
                         ))}
                       </div>
                     </SortableContext>
@@ -373,19 +340,6 @@ export default function Canvas({
                 </Container>
               ))}
             </SortableContext>
-            {/* <DragOverlay adjustScale={false}>
-              {activeId && activeId.toString().includes("item") && (
-                <Items id={activeId} title={findItemTitle(activeId)} />
-              )}
-        
-              {activeId && activeId.toString().includes("container") && (
-                <Container id={activeId} title={findContainerTitle(activeId)}>
-                  {findContainerItems(activeId).map((i) => (
-                    <Items key={i.id} title={i.title} id={i.id} />
-                  ))}
-                </Container>
-              )}
-            </DragOverlay> */}
           </DndContext>
         </div>
       </div>

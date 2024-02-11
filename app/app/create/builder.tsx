@@ -13,21 +13,12 @@ const Builder = () => {
   const [containers, setContainers] = useState<DNDType[]>([
     {
       id: "container-fdsfysdfhds_fjsdfhsdg_fsd",
-      title: "fkdjghfjghfd",
+      title: "",
       items: [
         {
           id: "item-cb84a724-f9e3-4c6f-b2ea-7001be3e91f6",
-          title: "ouiouiouioui",
-        },
-      ],
-    },
-    {
-      id: "container-fdhgfhgfhfsfysdfhds_fjsdfhsdg_fsd",
-      title: "fkdjghfgfdgfdgfjghfd",
-      items: [
-        {
-          id: "item-cbfgdfgfdg84a724-f9e3-4c6f-b2ea-7001be3e91f6",
-          title: "oufg",
+          title: "",
+          component: "text",
         },
       ],
     },

@@ -1,8 +1,10 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Separator } from "@/components/ui/separator";
+0;
 import { DNDType } from "./canvas";
 import { v4 as uuidv4 } from "uuid";
 import { Button } from "@/components/ui/button";
+import { MdOutlineTextFields } from "react-icons/md";
 
 const Sidebar = ({
   containers,
@@ -26,10 +28,10 @@ const Sidebar = ({
           <TabsTrigger value="themes">Themes</TabsTrigger>
         </TabsList>
         <Separator className=" my-1 bg-slate-500" />
-        <TabsContent value="insert">
+        <TabsContent value="insert" className="flex flex-wrap p-4">
           <Button
             variant="outline"
-            className=" m-8"
+            className="flex aspect-square h-24 w-24 flex-col gap-0.5 p-4"
             onClick={() => {
               addItem({
                 id: `container-${uuidv4()}`,
@@ -38,12 +40,14 @@ const Sidebar = ({
                   {
                     id: `item-${uuidv4()}`,
                     title: "component",
+                    component: "text",
                   },
                 ],
               });
             }}
           >
-            Add Element
+            <MdOutlineTextFields className="text-5xl" />
+            <p>Text</p>
           </Button>
         </TabsContent>
         <TabsContent value="pages">Change your pages here.</TabsContent>
