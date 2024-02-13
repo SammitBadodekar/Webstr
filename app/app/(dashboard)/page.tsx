@@ -13,6 +13,8 @@ import { Button } from "@/components/ui/button";
 export default async function Home() {
   return (
     <>
+      {/* Gradient section like Canva - prototype  */}
+
       {/* <div className="flex h-max w-full flex-col items-center gap-2 overflow-hidden rounded-xl bg-gradient-to-r from-cyan-500 via-blue-500 to-blue-700 p-8 text-lightTheme dark:via-blue-800 dark:to-blue-900 md:gap-4">
         <h2 className="text-xl font-semibold md:text-3xl">
           Instant websites, minimal effort

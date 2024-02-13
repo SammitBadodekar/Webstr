@@ -1,6 +1,6 @@
 "use client";
 import Sidebar from "./sidebar";
-import Canvas, { DNDType } from "./canvas";
+import Canvas from "./canvas";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import {
   ResizableHandle,
@@ -10,7 +10,7 @@ import {
 import { PiSpinnerGapThin } from "react-icons/pi";
 
 const Builder = () => {
-  const [containers, setContainers] = useState<DNDType[]>([
+  const [containers, setContainers] = useState<any[]>([
     {
       id: "container-fdsfysdfhds_fjsdfhsdg_fsd",
       title: "",
@@ -46,7 +46,8 @@ const Builder = () => {
               defaultSize={containerWidth > 800 ? 80 : 60}
               className="h-full w-full"
             >
-              <Canvas containers={containers} setContainers={setContainers} />
+              <Canvas /* containers={containers} setContainers={setContainers} */
+              />
             </ResizablePanel>
             <ResizableHandle withHandle />
             <ResizablePanel

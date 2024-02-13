@@ -1,7 +1,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Separator } from "@/components/ui/separator";
 0;
-import { DNDType } from "./canvas";
 import { v4 as uuidv4 } from "uuid";
 import { Button } from "@/components/ui/button";
 import { MdOutlineTextFields } from "react-icons/md";
@@ -10,7 +9,7 @@ const Sidebar = ({
   containers,
   setContainers,
 }: {
-  containers: DNDType[];
+  containers: any[];
   setContainers: Function;
 }) => {
   const addItem = (item: any) => {

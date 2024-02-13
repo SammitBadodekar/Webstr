@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { FaCrown } from "react-icons/fa";
-import { CiHome } from "react-icons/ci";
+import { FiHome } from "react-icons/fi";
 import { VscFileSubmodule } from "react-icons/vsc";
 import { LuLayoutTemplate } from "react-icons/lu";
 import { BsBuildings } from "react-icons/bs";
@@ -14,6 +14,9 @@ import { useRecoilState } from "recoil";
 import { homeSidebarState } from "@/app/state/atoms/home-sidebar";
 import { IoCloseSharp } from "react-icons/io5";
 import { usePathname, useRouter } from "next/navigation";
+import LogoutButton from "@/components/logout-button";
+import Profile from "@/components/profile";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 const Sidebar = () => {
   const { data: session } = useSession();
@@ -43,7 +46,7 @@ const Sidebar = () => {
           !isOpen
             ? "-translate-x-full md:translate-x-0"
             : "translate-x-0 pt-16 md:pt-0"
-        } fixed top-0 z-20 h-screen w-72 overflow-y-scroll bg-popover p-2 transition-transform md:static md:z-0 md:h-full md:bg-background`}
+        } fixed top-0 z-20 flex h-[100dvh] w-96 flex-col overflow-y-scroll bg-popover p-2 transition-transform md:static md:z-0 `}
         ref={modalRef}
       >
         <button
@@ -55,25 +58,16 @@ const Sidebar = () => {
           <IoCloseSharp className="text-primary" />
         </button>
 
-        <div className=" flex items-center gap-2 p-2 px-4">
-          <ProfileAvatar src={session?.user?.image!} size={40} />
-          <p className=" text-sm font-semibold">Free Tier</p>
+        <div className="mx-8 mt-8 flex items-center justify-between">
+          <Link href="/" className="font-logo  w-fit text-5xl font-black ">
+            Webstr
+          </Link>
+          <ThemeToggle />
         </div>
-        <Link
-          onClick={() => setIsOpen(false)}
-          href="/pro"
-          className=" mb-4 flex w-full items-center justify-center gap-2 rounded-md bg-background p-2 font-bold transition-colors ease-in hover:bg-white dark:hover:bg-gray-700 md:bg-popover"
-        >
-          <p className=" pb-1 text-yellow-500">
-            <FaCrown />
-          </p>
 
-          <p>Get Webstr Pro</p>
-        </Link>
-
-        <div className=" grid gap-1">
+        <div className="flex flex-col gap-1 px-8 pt-8">
           <SidebarItem href="/" title="Home">
-            <CiHome />
+            <FiHome />
           </SidebarItem>
           <SidebarItem href="/projects" title="Projects">
             <VscFileSubmodule />
@@ -88,6 +82,26 @@ const Sidebar = () => {
           <SidebarItem href="/trash" title="Trash">
             <RiDeleteBin5Line />
           </SidebarItem>
+        </div>
+
+        <div className=" mx-auto mb-2 mt-auto flex w-11/12 flex-col items-center gap-4 rounded-xl bg-background p-4">
+          <div className="flex items-center justify-center gap-2 rounded-md p-2 text-lg font-bold transition-colors ease-in">
+            <p className=" pb-1 text-yellow-500">
+              <FaCrown />
+            </p>
+
+            <p>Get Webstr Pro</p>
+          </div>
+          <p className=" text-center text-sm">
+            Join the Webstr Pro plan to unlock custom domains, 100k tokens /
+            month, and more.
+          </p>
+          <Button asChild className="" onClick={() => setIsOpen(false)}>
+            <Link href="/pro">Upgrade</Link>
+          </Button>
+        </div>
+        <div className=" p-4 ">
+          <Profile />
         </div>
       </div>
       <div
@@ -124,12 +138,10 @@ const SidebarItem = ({
         onClick={() => setIsOpen(false)}
         href={href}
         className={`${
-          url === href
-            ? "bg-background font-bold transition-all md:bg-popover"
-            : ""
-        } flex items-center gap-2 rounded-md p-1 px-2 transition-colors ease-in hover:bg-popover`}
+          url === href ? "bg-background" : "hover:bg-black/[0.15]"
+        } flex items-center gap-2 rounded-md p-2 transition-colors ease-in `}
       >
-        {children} <p>{title}</p>
+        <span className="text-xl">{children}</span> <p>{title}</p>
       </Link>
     );
 };
