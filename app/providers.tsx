@@ -9,14 +9,9 @@ export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <SessionProvider>
       <RecoilRoot>
-        <Toaster theme="dark" className="hidden dark:block" />
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
+          <Toaster theme="system" />
         </ThemeProvider>
       </RecoilRoot>
     </SessionProvider>

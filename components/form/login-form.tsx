@@ -13,12 +13,14 @@ import {
   FormControl,
   FormField,
   FormItem,
+  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { signIn, signOut } from "next-auth/react";
 import { useState } from "react";
 import { toast } from "sonner";
+import { Separator } from "../ui/separator";
 
 const FormSchema = z.object({
   email: z.string().email({
@@ -56,31 +58,37 @@ export function LoginForm() {
 
   return (
     <Form {...form}>
-      <div className=" flex flex-col gap-4 rounded-xl bg-secondaryLightTheme p-8 shadow-xl dark:bg-darkGray">
-        <h1 className=" text-center text-xl font-bold sm:px-8 sm:text-2xl">
-          Welcome Back !!
+      <div className=" flex min-h-[20rem] flex-col gap-4 rounded-xl bg-white/50 p-8 shadow-xl  dark:bg-black/50 sm:min-w-[30rem]">
+        <h1 className="font-logo w-full text-center text-5xl font-black ">
+          Webstr
         </h1>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className=" flex flex-col gap-4 pt-4"
+          className=" flex flex-col gap-4 pt-8"
         >
           <FormField
             control={form.control}
             name="email"
             render={({ field }) => (
               <FormItem>
+                {/* <FormLabel>Email</FormLabel> */}
                 <FormControl>
-                  <Input placeholder="john.doe@mail.com" {...field} />
+                  <Input
+                    placeholder="sammit.badodekar@example.com"
+                    {...field}
+                    className="h-[3rem] p-2"
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
+
           <Button
             type="submit"
-            className="flex items-center gap-2 font-semibold"
+            className="flex items-center gap-2 text-[1.05rem] font-medium"
             disabled={isSubmitting}
-            size="sm"
+            size="lg"
           >
             <span>
               <SiGmail />
@@ -88,20 +96,24 @@ export function LoginForm() {
             Email
           </Button>
         </form>
-
+        <div className="flex w-full items-center gap-2">
+          <Separator className="h-[0.1rem] w-[45%] bg-black/30 dark:bg-white/30" />
+          <p>OR</p>
+          <Separator className="h-[0.1rem] w-[45%] bg-black/30 dark:bg-white/30" />
+        </div>
         <div className="flex w-full items-center justify-between gap-4 pt-4">
           <Button
             onClick={() => signIn("google")}
-            className="flex w-full items-center gap-2 font-semibold"
-            size="sm"
+            className="flex w-full items-center gap-2 text-[1.05rem] font-medium"
+            size="lg"
           >
             <BsGoogle />
             Google
           </Button>
           <Button
             onClick={() => signIn("github")}
-            className="flex w-full items-center gap-2 font-semibold"
-            size="sm"
+            className="flex w-full items-center gap-2 text-[1.05rem] font-medium"
+            size="lg"
           >
             <FaGithub />
             Github
