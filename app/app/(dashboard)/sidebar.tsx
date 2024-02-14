@@ -17,6 +17,8 @@ import { usePathname, useRouter } from "next/navigation";
 import LogoutButton from "@/components/logout-button";
 import Profile from "@/components/profile";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { IoClose } from "react-icons/io5";
+import ProPlanBanner from "./pro-plan-banner";
 
 const Sidebar = () => {
   const { data: session } = useSession();
@@ -65,7 +67,7 @@ const Sidebar = () => {
           <ThemeToggle />
         </div>
 
-        <div className="flex flex-col gap-1 px-8 pt-8">
+        <div className="flex flex-col gap-1 px-8 py-8">
           <SidebarItem href="/" title="Home">
             <FiHome />
           </SidebarItem>
@@ -78,28 +80,13 @@ const Sidebar = () => {
           <SidebarItem href="/create-team" title="Create a team">
             <BsBuildings />
           </SidebarItem>
-          <div className=" my-2 h-[0.1rem] w-full bg-slate-300 dark:bg-slate-600 "></div>
+
           <SidebarItem href="/trash" title="Trash">
             <RiDeleteBin5Line />
           </SidebarItem>
         </div>
 
-        <div className=" mx-auto mb-2 mt-auto flex w-11/12 flex-col items-center gap-4 rounded-xl bg-background p-4">
-          <div className="flex items-center justify-center gap-2 rounded-md p-2 text-lg font-bold transition-colors ease-in">
-            <p className=" pb-1 text-yellow-500">
-              <FaCrown />
-            </p>
-
-            <p>Get Webstr Pro</p>
-          </div>
-          <p className=" text-center text-sm">
-            Join the Webstr Pro plan to unlock custom domains, 100k tokens /
-            month, and more.
-          </p>
-          <Button asChild className="" onClick={() => setIsOpen(false)}>
-            <Link href="/pro">Upgrade</Link>
-          </Button>
-        </div>
+        <ProPlanBanner />
         <div className=" p-4 ">
           <Profile />
         </div>
