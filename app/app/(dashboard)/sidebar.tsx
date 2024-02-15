@@ -1,7 +1,5 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { FaCrown } from "react-icons/fa";
 import { FiHome } from "react-icons/fi";
 import { VscFileSubmodule } from "react-icons/vsc";
 import { LuLayoutTemplate } from "react-icons/lu";
@@ -9,21 +7,21 @@ import { BsBuildings } from "react-icons/bs";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
-import ProfileAvatar from "@/components/ui/profile-avatar";
 import { useRecoilState } from "recoil";
 import { homeSidebarState } from "@/app/state/atoms/home-sidebar";
-import { IoCloseSharp } from "react-icons/io5";
+
 import { usePathname, useRouter } from "next/navigation";
-import LogoutButton from "@/components/logout-button";
 import Profile from "@/components/profile";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
-import { IoClose } from "react-icons/io5";
 import ProPlanBanner from "./pro-plan-banner";
+
+let hasVisited = false;
 
 const Sidebar = () => {
   const { data: session } = useSession();
   const [isOpen, setIsOpen] = useRecoilState(homeSidebarState);
   const modalRef = useRef<HTMLDivElement>(null);
+  const path = usePathname();
 
   useEffect(() => {
     const handleClickOutside = (e: any) => {
@@ -62,9 +60,16 @@ const Sidebar = () => {
         </div>
 
         <div className="flex flex-col gap-1 p-2 md:p-8">
-          <SidebarItem href="/" title="Home">
-            <FiHome />
-          </SidebarItem>
+          <div
+            className={`${
+              !hasVisited ? "invisible h-0" : "h-full"
+            } transition-all duration-500`}
+          >
+            <SidebarItem href="/" title="Home">
+              <FiHome />
+            </SidebarItem>
+          </div>
+
           <SidebarItem href="/projects" title="Projects">
             <VscFileSubmodule />
           </SidebarItem>
@@ -116,7 +121,10 @@ const SidebarItem = ({
   if (url)
     return (
       <Link
-        onClick={() => setIsOpen(false)}
+        onClick={() => {
+          setIsOpen(false);
+          hasVisited = true;
+        }}
         href={href}
         className={`${
           url === href

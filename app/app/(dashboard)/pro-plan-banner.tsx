@@ -11,7 +11,7 @@ const ProPlanBanner = () => {
   return (
     <div
       className={`${
-        isOpen ? "" : " scale-0 transition-all"
+        isOpen ? "" : "h-0 scale-0 transition-all"
       } relative mx-auto mb-2 mt-auto flex w-11/12 flex-col items-center gap-4 rounded-xl bg-background p-4`}
     >
       <button onClick={() => setIsOpen(false)}>
