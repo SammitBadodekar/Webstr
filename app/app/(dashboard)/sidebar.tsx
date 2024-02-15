@@ -47,27 +47,21 @@ const Sidebar = () => {
         className={` ${
           !isOpen
             ? "-translate-x-full md:translate-x-0"
-            : "translate-x-0 pt-16 md:pt-0"
-        } fixed top-0 z-20 flex h-[100dvh] w-96 flex-col overflow-y-scroll bg-popover p-2 transition-transform md:static md:z-0 `}
+            : "translate-x-0  md:pt-0"
+        } fixed top-0 z-30 flex h-full w-64 flex-col overflow-y-scroll bg-popover p-2 transition-transform md:static md:z-0 md:w-96 `}
         ref={modalRef}
       >
-        <button
-          onClick={() => {
-            setIsOpen(!isOpen);
-          }}
-          className="absolute right-6 top-6 md:hidden"
-        >
-          <IoCloseSharp className="text-primary" />
-        </button>
-
-        <div className="mx-8 mt-8 flex items-center justify-between">
-          <Link href="/" className="font-logo  w-fit text-5xl font-black ">
+        <div className="mb-8 hidden items-center justify-between md:mx-8 md:mb-0 md:mt-8 md:flex">
+          <Link
+            href="/"
+            className="font-logo w-fit text-3xl font-black md:text-5xl "
+          >
             Webstr
           </Link>
           <ThemeToggle />
         </div>
 
-        <div className="flex flex-col gap-1 px-8 py-8">
+        <div className="flex flex-col gap-1 p-2 md:p-8">
           <SidebarItem href="/" title="Home">
             <FiHome />
           </SidebarItem>
@@ -94,7 +88,7 @@ const Sidebar = () => {
       <div
         className={`${
           isOpen ? "" : "hidden"
-        } absolute top-0 z-10 h-[100dvh] w-screen bg-darkTransparent backdrop-blur-[0.1rem] md:hidden`}
+        } absolute top-0 z-20 h-[100dvh] w-screen bg-darkTransparent backdrop-blur-[0.1rem] md:hidden`}
       ></div>
     </>
   );
@@ -125,10 +119,12 @@ const SidebarItem = ({
         onClick={() => setIsOpen(false)}
         href={href}
         className={`${
-          url === href ? "bg-background" : "hover:bg-black/[0.15]"
-        } flex items-center gap-2 rounded-md p-2 transition-colors ease-in `}
+          url === href
+            ? "bg-black/10 dark:bg-background"
+            : "hover:bg-black/5 dark:hover:bg-black/[0.15]"
+        } flex items-center gap-2 rounded-md p-1 px-2 transition-colors ease-in md:p-2 `}
       >
-        <span className="text-xl">{children}</span> <p>{title}</p>
+        <span className="text-lg md:text-xl">{children}</span> <p>{title}</p>
       </Link>
     );
 };

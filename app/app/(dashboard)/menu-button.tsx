@@ -10,7 +10,7 @@ const MenuButton = () => {
   const [isOpen, setIsOpen] = useRecoilState(homeSidebarState);
   return (
     <Button
-      className="md:hidden"
+      className="mr-auto bg-transparent md:hidden"
       size="icon"
       variant="secondary"
       onClick={() => setIsOpen((prev) => !prev)}

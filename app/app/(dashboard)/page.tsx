@@ -9,6 +9,8 @@ import { FaShop } from "react-icons/fa6";
 import { BiCollection } from "react-icons/bi";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { IoAddSharp } from "react-icons/io5";
+import MenuButton from "./menu-button";
 
 export default async function Home() {
   return (
@@ -49,24 +51,27 @@ export default async function Home() {
         </div>
       </div> */}
 
-      <div className="flex w-full flex-col items-center gap-4 p-4">
-        <h2 className="self-start text-2xl font-semibold">Recent Projects</h2>
+      <div className="flex w-full flex-col items-center gap-4 p-4 pt-16 md:p-8">
+        <div className="flex w-full items-center justify-between">
+          <h2 className="text-lg font-semibold md:text-2xl">Recent Projects</h2>
+          <Button asChild className="font-bold" size="sm">
+            <Link href="/create" className="flex items-center gap-2">
+              <IoAddSharp className="text-xl font-bold" />
+              <p className="hidden md:inline">Create new project</p>
+            </Link>
+          </Button>
+        </div>
         <div className="flex w-full flex-col items-center gap-4 p-8">
           <Image
-            width={40}
-            height={40}
+            width={60}
+            height={60}
             alt="image"
             src="/man-on-a-bicycle.svg"
-            className="h-64 w-full pr-8 dark:invert"
+            className="w-64 pr-8 dark:invert md:h-64 md:w-full"
           />
-          <Button
-            asChild
-            className="mt-4 self-center border-2 border-primary"
-            variant="outline"
-            size="sm"
-          >
-            <Link href="/create">Create a new project</Link>
-          </Button>
+          <p className="text-center">
+            Your projects will be shown here after they are created
+          </p>
         </div>
       </div>
     </>
