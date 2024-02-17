@@ -120,6 +120,7 @@ const SidebarItem = ({
     return (
       <Link
         onClick={() => {
+          setUrl(href);
           setIsOpen(false);
           hasVisited = true;
         }}
