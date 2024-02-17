@@ -15,8 +15,6 @@ import Profile from "@/components/profile";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import ProPlanBanner from "./pro-plan-banner";
 
-let hasVisited = false;
-
 const Sidebar = () => {
   const { data: session } = useSession();
   const [isOpen, setIsOpen] = useRecoilState(homeSidebarState);
@@ -105,24 +103,20 @@ const SidebarItem = ({
   href: string;
 }) => {
   const [isOpen, setIsOpen] = useRecoilState(homeSidebarState);
-  const [url, setUrl] = useState<string | undefined>();
-  const router = useRouter();
+  const url = usePathname();
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     if (window) {
-      setUrl(window?.location?.pathname);
+      setIsMounted(true);
     }
   }, []);
 
-  console.log(url);
-
-  if (url)
+  if (isMounted)
     return (
       <Link
         onClick={() => {
-          setUrl(href);
           setIsOpen(false);
-          hasVisited = true;
         }}
         href={href}
         className={`${
