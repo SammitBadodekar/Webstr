@@ -60,15 +60,9 @@ const Sidebar = () => {
         </div>
 
         <div className="flex flex-col gap-1 p-2 md:p-8">
-          <div
-            className={`${
-              !hasVisited ? "invisible h-0" : "h-full"
-            } transition-all duration-500`}
-          >
-            <SidebarItem href="/" title="Home">
-              <FiHome />
-            </SidebarItem>
-          </div>
+          <SidebarItem href="/" title="Home">
+            <FiHome />
+          </SidebarItem>
 
           <SidebarItem href="/projects" title="Projects">
             <VscFileSubmodule />
@@ -111,12 +105,12 @@ const SidebarItem = ({
   href: string;
 }) => {
   const [isOpen, setIsOpen] = useRecoilState(homeSidebarState);
-  const url = usePathname();
+  const url = window?.location?.href;
   const router = useRouter();
 
   useEffect(() => {
-    router.push(url);
-  }, []);
+    setIsOpen((prev) => prev);
+  }, [url]);
 
   if (url)
     return (
