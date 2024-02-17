@@ -105,12 +105,16 @@ const SidebarItem = ({
   href: string;
 }) => {
   const [isOpen, setIsOpen] = useRecoilState(homeSidebarState);
-  const url = window?.location?.href;
+  const [url, setUrl] = useState<string | undefined>();
   const router = useRouter();
 
   useEffect(() => {
-    setIsOpen((prev) => prev);
-  }, [url]);
+    if (window) {
+      setUrl(window?.location?.pathname);
+    }
+  }, []);
+
+  console.log(url);
 
   if (url)
     return (
