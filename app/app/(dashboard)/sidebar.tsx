@@ -112,19 +112,21 @@ const SidebarItem = ({
     }
   }, []);
 
-  return (
-    <Link
-      onClick={() => {
-        setIsOpen(false);
-      }}
-      href={href}
-      className={`${
-        url === href
-          ? "bg-black/10 dark:bg-background"
-          : "hover:bg-black/5 dark:hover:bg-black/[0.15]"
-      } flex items-center gap-2 rounded-md p-1 px-2 transition-colors ease-in md:p-2 `}
-    >
-      <span className="text-lg md:text-xl">{children}</span> <p>{title}</p>
-    </Link>
-  );
+
+  if (isMounted)
+    return (
+      <Link
+        onClick={() => {
+          setIsOpen(false);
+        }}
+        href={href}
+        className={`${
+          url === href
+            ? "bg-black/10 dark:bg-background"
+            : "hover:bg-black/5 dark:hover:bg-black/[0.15]"
+        } flex items-center gap-2 rounded-md p-1 px-2 transition-colors ease-in md:p-2 `}
+      >
+        <span className="text-lg md:text-xl">{children}</span> <p>{title}</p>
+      </Link>
+    );
 };

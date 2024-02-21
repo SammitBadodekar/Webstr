@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@craftjs/core':
+    specifier: ^0.2.4
+    version: 0.2.4(react@18.2.0)
   '@dnd-kit/core':
     specifier: ^6.1.0
     version: 6.1.0(react-dom@18.2.0)(react@18.2.0)
@@ -369,6 +372,31 @@ packages:
 
   /@codexteam/icons@0.3.0:
     resolution: {integrity: sha512-fJE9dfFdgq8xU+sbsxjH0Kt8Yeatw9xHBJWb77DhRkEXz3OCoIS6hrRC1ewHEryxzIjxD8IyQrRq2f+Gz3BcmA==}
+    dev: false
+
+  /@craftjs/core@0.2.4(react@18.2.0):
+    resolution: {integrity: sha512-q2TnE4nCIGJyWFwUzaH902Y9dz5Lx3Vg46RmxiELI/g18afYy6WEKen6mKGNZEbWZxg/5WQF9ZTcksW25cnRTA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18
+    dependencies:
+      '@craftjs/utils': 0.2.1(react@18.2.0)
+      debounce: 1.2.1
+      lodash: 4.17.21
+      react: 18.2.0
+      tiny-invariant: 1.3.1
+    dev: false
+
+  /@craftjs/utils@0.2.1(react@18.2.0):
+    resolution: {integrity: sha512-NNOdJO0KTG/+vh986WOhehtgwg1lr3mLwcIJHYymMuVAnzOrFgwHzZDuO/v7D0m9Xxbij7GE3VjzMLBHOxlWNA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18
+    dependencies:
+      immer: 9.0.21
+      lodash: 4.17.21
+      nanoid: 3.3.7
+      react: 18.2.0
+      shallowequal: 1.1.0
+      tiny-invariant: 1.3.1
     dev: false
 
   /@dnd-kit/accessibility@3.1.0(react@18.2.0):
@@ -4011,6 +4039,10 @@ packages:
       '@babel/runtime': 7.23.2
     dev: false
 
+  /debounce@1.2.1:
+    resolution: {integrity: sha512-XRRe6Glud4rd/ZGQfiV1ruXSfbvfJedlV9Y6zOlP+2K04vBYiJEte6stfFkCP03aMnY5tsipamumUjL14fofug==}
+    dev: false
+
   /debug@3.2.7:
     resolution: {integrity: sha512-CFjzYYAi4ThfiQvizrFQevTTXHtnCqWfe7x1AhgEscTz6ZbLbfoLRLPugTQyBth6f8ZERVUSyWHFD/7Wu4t1XQ==}
     peerDependencies:
@@ -5282,6 +5314,10 @@ packages:
   /ignore@5.2.4:
     resolution: {integrity: sha512-MAb38BcSbH0eHNBxn7ql2NH/kX33OkB3lZ1BNdh7ENeRChHTYsTvWrMubiIAMNS2llXEEgZ1MUOBtXChP3kaFQ==}
     engines: {node: '>= 4'}
+
+  /immer@9.0.21:
+    resolution: {integrity: sha512-bc4NBHqOqSfRW7POMkHd51LvClaeMXpm8dx0e8oE2GORbq5aRK7Bxl4FyzVLdGtLmvLKL7BTDBG5ACQm4HWjTA==}
+    dev: false
 
   /import-fresh@3.3.0:
     resolution: {integrity: sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==}
@@ -7843,6 +7879,10 @@ packages:
       define-data-property: 1.1.1
       functions-have-names: 1.2.3
       has-property-descriptors: 1.0.1
+
+  /shallowequal@1.1.0:
+    resolution: {integrity: sha512-y0m1JoUZSlPAjXVtPPW70aZWfIL/dSP7AFkRnniLCrK/8MDKog3TySTBmckD+RObVxH0v4Tox67+F14PdED2oQ==}
+    dev: false
 
   /sharp@0.32.6:
     resolution: {integrity: sha512-KyLTWwgcR9Oe4d9HwCwNM2l7+J0dUQwn/yf7S0EnTtb0eVS4RxO0eUSvxPtzT4F3SY+C4K6fqdv/DO27sJ/v/w==}
