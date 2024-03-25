@@ -1,4 +1,4 @@
-import { withNode } from '~/components/node/connector';
+import { withNode } from '@/components/node/connector';
 import { SettingsControl } from '../settings-control';
 import React from 'react';
 import { Element } from '@craftjs/core';
@@ -6,7 +6,7 @@ import { Element } from '@craftjs/core';
 const draggable = true;
 const droppable = true;
 
-interface OneBlockProps extends React.HTMLAttributes<HTMLDivElement> {}
+interface OneBlockProps extends React.HTMLAttributes<HTMLDivElement> { }
 
 export const OneBlock = React.forwardRef<HTMLDivElement, OneBlockProps>(
   ({ ...props }, ref) => {
@@ -17,12 +17,12 @@ export const OneBlock = React.forwardRef<HTMLDivElement, OneBlockProps>(
 
 OneBlock.displayName = 'div';
 
-export const NodeOneBlock = withNode(OneBlock, {
+export const NodeOneBlock: any = withNode(OneBlock, {
   draggable,
   droppable,
 });
 
-interface NodeTwoBlocksProps extends React.HTMLAttributes<HTMLDivElement> {}
+interface NodeTwoBlocksProps extends React.HTMLAttributes<HTMLDivElement> { }
 
 export const NodeTwoBlocks = ({ ...props }: NodeTwoBlocksProps) => {
   return (

@@ -20,7 +20,7 @@ export const withNode = <T extends {}>(
   { draggable = true, droppable = true } = {}
 ) => {
   // Wrap the returned component with forwardRef
-  const WithNode = forwardRef<HTMLElement, PropsWithChildren<T>>(
+  const WithNode: any = forwardRef<HTMLElement, PropsWithChildren<T>>(
     (props, ref) => {
       const {
         id,
@@ -54,11 +54,12 @@ export const withNode = <T extends {}>(
           ref={applyRef}
           {...props}
           className={
+            //@ts-ignore
             isActive ? `${props.className} component-selected` : props.className
           }
         >
           {typeof props.children === 'string' &&
-          props.children.trim() === '' ? (
+            props.children.trim() === '' ? (
             <>Empty text</>
           ) : (
             props.children || (
@@ -71,17 +72,9 @@ export const withNode = <T extends {}>(
       );
     }
   );
-
-  console.log('Component.displayName ', Component.displayName);
-
   WithNode.displayName = `WithNode(${Component.displayName})`;
 
   const importPathMapKey = Component.displayName?.toLowerCase();
-  console.log(
-    'importPathMapKey ',
-    importPathMapKey,
-    importPathMapKey && importPathMap[importPathMapKey]
-  );
 
   WithNode.craft = {
     displayName: Component.displayName,

@@ -1,9 +1,9 @@
-import { useEditor, useNode } from "@craftjs/core";
-import { MonitorPlay, Smartphone, Code, Redo, Undo } from "lucide-react";
-import React, { useState } from "react";
-// import { getOutputCode, getOutputHTMLFromId } from "@lib/code-gen";
-// import { CodeView } from "./code-view";
-// import { DrawerTrigger, DrawerContent, Drawer } from "./ui/drawer";
+import { useEditor, useNode } from '@craftjs/core';
+import { MonitorPlay, Smartphone, Code, Redo, Undo } from 'lucide-react';
+import React, { useState } from 'react';
+import { getOutputCode, getOutputHTMLFromId } from '@/lib/code-gen';
+import { CodeView } from './code-view';
+import { DrawerTrigger, DrawerContent, Drawer } from './ui/drawer';
 
 type CanvasProps = {
   children: React.ReactNode;
@@ -13,7 +13,7 @@ export const Canvas = ({ children }: CanvasProps) => {
   const {
     connectors: { connect, drag },
   } = useNode();
-  const [canvasWidth, setCanvasWidth] = useState("w-[100%]");
+  const [canvasWidth, setCanvasWidth] = useState('w-[100%]');
   const { canUndo, canRedo, actions, query } = useEditor((state, query) => ({
     canUndo: query.history.canUndo(),
     canRedo: query.history.canRedo(),
@@ -21,19 +21,15 @@ export const Canvas = ({ children }: CanvasProps) => {
   const [output, setOutput] = useState<string | null>();
   const [htmlOutput, setHtmlOutput] = useState<string | null>();
 
-  /* const generateCode = () => {
+  const generateCode = () => {
     const { importString, output } = getOutputCode(query.getNodes());
-
-    console.log("printing ", importString, output);
-
     setOutput(`${importString}\n\n${output}`);
   };
 
   const generateHTML = () => {
-    const htmlOutput = getOutputHTMLFromId("canvas-iframe");
-
+    const htmlOutput = getOutputHTMLFromId('canvas-iframe');
     setHtmlOutput(htmlOutput);
-  }; */
+  };
 
   const [open, setOpen] = useState(false);
   const [htmlOpen, setHtmlOpen] = useState(false);
@@ -43,16 +39,16 @@ export const Canvas = ({ children }: CanvasProps) => {
   };
 
   return (
-    <div className="flex h-full w-full justify-center">
-      <div className={`${canvasWidth} flex h-full flex-col rounded-sm border`}>
-        <div className="flex w-full items-center justify-between bg-gray-200 p-4">
+    <div className="w-full h-full flex justify-center">
+      <div className={`${canvasWidth} flex flex-col h-full border`}>
+        <div className="flex justify-between items-center p-2 w-full bg-gray-200">
           <div className="flex gap-3">
             <div className="h-3 w-3 rounded-full bg-red-400"></div>
             <div className="h-3 w-3 rounded-full bg-yellow-400"></div>
             <div className="h-3 w-3 rounded-full bg-green-400"></div>
           </div>
           <div className="flex gap-2">
-            {/*  <Drawer
+            <Drawer
               open={open}
               onOpenChange={(value: boolean) => {
                 generateCode();
@@ -63,14 +59,14 @@ export const Canvas = ({ children }: CanvasProps) => {
                 <Code
                   size={24}
                   strokeWidth={1.75}
-                  className="text-gray-500 transition duration-300 hover:text-primary"
+                  className="text-gray-500 hover:text-primary transition duration-300"
                 />
               </DrawerTrigger>
 
               <DrawerContent className="h-[75vh]">
                 <CodeView codeString={output as string} />
               </DrawerContent>
-            </Drawer> */}
+            </Drawer>
             {/* <Drawer
               open={htmlOpen}
               onOpenChange={(value: boolean) => {
@@ -99,7 +95,7 @@ export const Canvas = ({ children }: CanvasProps) => {
                   <Undo
                     size={24}
                     strokeWidth={1.75}
-                    className="text-gray-500 transition duration-300 hover:text-primary"
+                    className="text-gray-500 hover:text-primary transition duration-300"
                     onClick={(event) => {
                       actions.history.undo();
                     }}
@@ -111,7 +107,7 @@ export const Canvas = ({ children }: CanvasProps) => {
                   <Redo
                     size={24}
                     strokeWidth={1.75}
-                    className="text-gray-500 transition duration-300 hover:text-primary"
+                    className="text-gray-500 hover:text-primary transition duration-300"
                     onClick={(event) => {
                       actions.history.redo();
                     }}
@@ -123,7 +119,7 @@ export const Canvas = ({ children }: CanvasProps) => {
         </div>
 
         <div
-          className="w-full flex-1 rounded-b-lg bg-white"
+          className="w-full flex-1 bg-white p-4"
           ref={(ref) => {
             if (ref) {
               connect(drag(ref));
@@ -136,10 +132,3 @@ export const Canvas = ({ children }: CanvasProps) => {
     </div>
   );
 };
-
-// Canvas.craft = {
-//   displayName: "div",
-//   props: {
-//     className: "w-full h-full",
-//   },
-// };

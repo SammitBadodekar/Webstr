@@ -22,7 +22,6 @@ type ParticlesProps = {
 };
 export const SparklesCore = (props: ParticlesProps) => {
   const { theme } = useTheme();
-  console.log(theme);
   const {
     id,
     className,

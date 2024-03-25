@@ -46,8 +46,8 @@ const Builder = () => {
               defaultSize={containerWidth > 800 ? 80 : 60}
               className="h-full w-full"
             >
-              <Canvas /* containers={containers} setContainers={setContainers} */
-              />
+              {/* <Canvas containers={containers} setContainers={setContainers}
+              /> */}
             </ResizablePanel>
             <ResizableHandle withHandle />
             <ResizablePanel

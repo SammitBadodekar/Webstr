@@ -11,7 +11,7 @@ import { SettingsControl } from '../settings-control';
 import { withNode } from './connector';
 import { NodeButton } from './button';
 
-interface NodeCardProps extends React.HTMLAttributes<HTMLDivElement> {}
+interface NodeCardProps extends React.HTMLAttributes<HTMLDivElement> { }
 
 const draggable = true;
 const droppable = true; // Can drop items into to this component
@@ -20,7 +20,7 @@ export const NodeCardHeader = withNode(CardHeader, {
   droppable,
 });
 
-export const NodeCardTitle = withNode(CardTitle, {
+export const NodeCardTitle: any = withNode(CardTitle, {
   draggable,
   droppable,
 });
@@ -32,7 +32,7 @@ NodeCardTitle.craft = {
   },
 };
 
-export const NodeCardDescription = withNode(CardDescription, {
+export const NodeCardDescription: any = withNode(CardDescription, {
   draggable,
   droppable,
 });
@@ -57,7 +57,7 @@ export const NodeCardContainer = withNode(Card, {
   droppable,
 });
 
-export const NodeCard = ({ ...props }: NodeCardProps) => {
+export const NodeCard: any = ({ ...props }: NodeCardProps) => {
   return (
     <NodeCardContainer {...props}>
       <Element
