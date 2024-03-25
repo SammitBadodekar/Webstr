@@ -1,6 +1,6 @@
 "use client";
 import Sidebar from "./sidebar";
-import Canvas from "./canvas";
+import { Canvas } from "./canvas";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import {
   ResizableHandle,
