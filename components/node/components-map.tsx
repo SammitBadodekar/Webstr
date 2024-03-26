@@ -8,7 +8,7 @@ import {
   CardContent,
   CardFooter,
 } from '../ui/card';
-import { OneBlock, NodeOneBlock, NodeTwoBlocks } from './layout';
+import { OneBlock, NodeOneBlock, NodeTwoBlocks, NodeThreeBlocks } from './layout';
 import { NodeButton } from './button';
 import { NodeCard } from './card';
 import { Element } from '@craftjs/core';
@@ -19,14 +19,14 @@ export type Components = {
     name: string;
     props?: {
       variant?:
-        | 'link'
-        | 'default'
-        | 'destructive'
-        | 'outline'
-        | 'secondary'
-        | 'ghost'
-        | null
-        | undefined;
+      | 'link'
+      | 'default'
+      | 'destructive'
+      | 'outline'
+      | 'secondary'
+      | 'ghost'
+      | null
+      | undefined;
       className?: string;
       children?: ReactNode | string;
     };
@@ -37,32 +37,83 @@ export type Components = {
 
 export const componentsMap: Components[] = [
   {
-    name: 'Buttons',
+    name: "Layout",
     items: [
       {
-        name: 'Default',
-        demo: <Button>Default</Button>,
-        node: <NodeButton>Default</NodeButton>,
+        name: "One Block",
+        demo: (
+          <OneBlock className="bg-white p-4 text-center italic outline-dashed outline-gray-500">
+            One Block
+          </OneBlock>
+        ),
+        node: (
+          <Element
+            canvas
+            is={NodeOneBlock as typeof NodeOneBlock & string}
+            id="one-block"
+          />
+        ),
       },
       {
-        name: 'Outline',
-        props: { variant: 'outline', children: 'Outline' },
-        demo: <Button variant={'outline'}>Outline</Button>,
-        node: <NodeButton variant={'outline'}>Outline</NodeButton>,
+        name: "Two Blocks",
+        demo: (
+          <OneBlock className="flex flex-row bg-white p-2 text-center w-full italic outline-dashed outline-gray-500">
+            <OneBlock className="bg-white text-center italic outline-dashed outline-gray-500 p-2">
+              First Block
+            </OneBlock>
+            <OneBlock className="bg-white text-center italic outline-dashed outline-gray-500 p-2">
+              Second Block
+            </OneBlock>
+          </OneBlock>
+        ),
+        node: <NodeTwoBlocks></NodeTwoBlocks>,
       },
       {
-        name: 'Destructive',
-        props: { variant: 'destructive', children: 'Destructive' },
-        demo: <Button variant={'destructive'}>Destructive</Button>,
-        node: <NodeButton variant={'destructive'}>Destructive</NodeButton>,
+        name: "Three Blocks",
+        demo: (
+          <OneBlock className="flex flex-row bg-white p-2 text-center w-full italic outline-dashed outline-gray-500">
+            <OneBlock className="bg-white text-center italic outline-dashed outline-gray-500 p-1">
+              First Block
+            </OneBlock>
+            <OneBlock className="bg-white text-center italic outline-dashed outline-gray-500 p-1">
+              Second Block
+            </OneBlock>
+            <OneBlock className="bg-white text-center italic outline-dashed outline-gray-500 p-1">
+              third Block
+            </OneBlock>
+          </OneBlock>
+        ),
+        node: <NodeThreeBlocks></NodeThreeBlocks>,
       },
     ],
   },
   {
-    name: 'Cards',
+    name: "Buttons",
     items: [
       {
-        name: 'Default',
+        name: "Default",
+        demo: <Button>Default</Button>,
+        node: <NodeButton>Default</NodeButton>,
+      },
+      {
+        name: "Outline",
+        props: { variant: "outline", children: "Outline" },
+        demo: <Button variant={"outline"}>Outline</Button>,
+        node: <NodeButton variant={"outline"}>Outline</NodeButton>,
+      },
+      {
+        name: "Destructive",
+        props: { variant: "destructive", children: "Destructive" },
+        demo: <Button variant={"destructive"}>Destructive</Button>,
+        node: <NodeButton variant={"destructive"}>Destructive</NodeButton>,
+      },
+    ],
+  },
+  {
+    name: "Cards",
+    items: [
+      {
+        name: "Default",
         demo: (
           <Card className="w-full">
             <CardHeader>
@@ -76,40 +127,6 @@ export const componentsMap: Components[] = [
           </Card>
         ),
         node: <NodeCard></NodeCard>,
-      },
-    ],
-  },
-  {
-    name: 'Layout',
-    items: [
-      {
-        name: 'One Block',
-        demo: (
-          <OneBlock className="text-center italic p-4 bg-yellow-100 outline-dashed outline-amber-400">
-            One Block
-          </OneBlock>
-        ),
-        node: (
-          <Element
-            canvas
-            is={NodeOneBlock as typeof NodeOneBlock & string}
-            id="one-block"
-          />
-        ),
-      },
-      {
-        name: 'Two Blocks',
-        demo: (
-          <OneBlock className="text-center italic p-4 bg-yellow-100 outline-dashed outline-amber-400 flex flex-row">
-            <OneBlock className="text-center italic bg-yellow-100 outline-dashed outline-amber-400">
-              First Block
-            </OneBlock>
-            <OneBlock className="text-center italic bg-yellow-100 outline-dashed outline-amber-400">
-              Second Block
-            </OneBlock>
-          </OneBlock>
-        ),
-        node: <NodeTwoBlocks></NodeTwoBlocks>,
       },
     ],
   },

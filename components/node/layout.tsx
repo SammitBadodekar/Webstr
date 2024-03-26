@@ -41,6 +41,40 @@ export const NodeTwoBlocks = ({ ...props }: NodeTwoBlocksProps) => {
   );
 };
 
+interface NodeThreeBlocksProps extends React.HTMLAttributes<HTMLDivElement> { }
+
+export const NodeThreeBlocks = ({ ...props }: NodeThreeBlocksProps) => {
+  return (
+    <NodeOneBlock {...props}>
+      <Element
+        canvas
+        is={NodeOneBlock as typeof NodeOneBlock & string}
+        id="first-block"
+      />
+      <Element
+        canvas
+        is={NodeOneBlock as typeof NodeOneBlock & string}
+        id="second-block"
+      />
+      <Element
+        canvas
+        is={NodeOneBlock as typeof NodeOneBlock & string}
+        id="third-block"
+      />
+    </NodeOneBlock>
+  );
+};
+
+NodeThreeBlocks.craft = {
+  displayName: 'div',
+  props: {
+    className: 'flex flex-row m-2 p-4',
+  },
+  related: {
+    toolbar: SettingsControl,
+  },
+};
+
 NodeTwoBlocks.craft = {
   displayName: 'div',
   props: {

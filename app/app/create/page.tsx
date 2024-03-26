@@ -17,7 +17,7 @@ import { ControlPanel } from '@/components/control-panel';
 import { Viewport } from '@/components/viewport';
 import { RenderNode } from '@/components/render-node';
 import { componentsMap } from '@/components/node/components-map';
-import { NodeOneBlock, NodeTwoBlocks } from '@/components/node/layout';
+import { NodeOneBlock, NodeTwoBlocks, NodeThreeBlocks } from '@/components/node/layout';
 
 export default function Page() {
   return (
@@ -34,6 +34,7 @@ export default function Page() {
           NodeCardFooter,
           NodeOneBlock,
           NodeTwoBlocks,
+          NodeThreeBlocks
         }}
         onRender={RenderNode}
       >

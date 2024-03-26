@@ -30,8 +30,17 @@ export interface SideMenuProps {
 
 export const SideMenu = ({ componentsMap }: SideMenuProps) => {
   const { connectors, query } = useEditor();
+  const { active, related } = useEditor((state, query) => {
+    const currentlySelectedNodeId = query.getEvent("selected").first();
+    return {
+      active: currentlySelectedNodeId,
+      related:
+        currentlySelectedNodeId && state.nodes[currentlySelectedNodeId].related,
+    };
+  });
   const [activeSection, setActiveSection] = useState<string | null>(null)
   const [activeTab, setActiveTab] = useState<string | null>(null)
+  const isItemSelected = active && related?.toolbar
 
   return (
     <aside className="h-[100dvh] w-[28rem] bg-popover p-4">
@@ -40,7 +49,9 @@ export const SideMenu = ({ componentsMap }: SideMenuProps) => {
           copy(lz.encodeBase64(lz.compress(json)));
         }}>get json</Button> */}
 
-      {!activeSection && (
+      {isItemSelected && React.createElement(related.toolbar)}
+
+      {!isItemSelected && !activeSection && (
         <div className="grid gap-8 p-4">
           <div className="flex w-full items-center justify-around gap-8">
             <Link
@@ -66,7 +77,7 @@ export const SideMenu = ({ componentsMap }: SideMenuProps) => {
         </div>
       )}
 
-      {activeSection === "Components" && (
+      {!isItemSelected && activeSection === "Components" && (
         <div className=''>
           {!activeTab && <BackButton set={setActiveSection} />}
           {componentsMap.map((menuItem, index) => (
