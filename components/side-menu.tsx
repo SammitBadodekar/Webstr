@@ -49,6 +49,7 @@ export const SideMenu = ({ componentsMap }: SideMenuProps) => {
           copy(lz.encodeBase64(lz.compress(json)));
         }}>get json</Button> */}
 
+      {/* show properties of selected item */}
       {isItemSelected && React.createElement(related.toolbar)}
 
       {!isItemSelected && !activeSection && (
@@ -78,17 +79,20 @@ export const SideMenu = ({ componentsMap }: SideMenuProps) => {
       )}
 
       {!isItemSelected && activeSection === "Components" && (
-        <div className=''>
+        <div className="">
           {!activeTab && <BackButton set={setActiveSection} />}
           {componentsMap.map((menuItem, index) => (
             <>
               <div key={index} className="">
                 {!activeTab && (
                   <button
-                    className="flex w-full justify-between gap-8 items-center rounded-md p-4 my-2 dark:bg-white/5 bg-white/60 shadow"
+                    className="my-2 flex w-full items-center justify-between gap-8 rounded-md bg-white/60 p-4 shadow dark:bg-white/5"
                     onClick={() => setActiveTab(menuItem.name)}
                   >
-                    {menuItem.name} <span><IoIosArrowForward /></span>
+                    {menuItem.name}
+                    <span>
+                      <IoIosArrowForward />
+                    </span>
                   </button>
                 )}
               </div>
