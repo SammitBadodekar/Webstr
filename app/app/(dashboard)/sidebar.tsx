@@ -35,16 +35,15 @@ const Sidebar = () => {
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
-  }, [isOpen]);
+  }, [isOpen, setIsOpen]);
 
   return (
     <>
       <div
-        className={` ${
-          !isOpen
+        className={` ${!isOpen
             ? "-translate-x-full md:translate-x-0"
             : "translate-x-0  md:pt-0"
-        } fixed top-0 z-30 flex h-full w-64 flex-col overflow-y-scroll bg-popover p-2 transition-transform md:static md:z-0 md:w-96 `}
+          } fixed top-0 z-30 flex h-full w-64 flex-col overflow-y-scroll bg-popover p-2 transition-transform md:static md:z-0 md:w-96 `}
         ref={modalRef}
       >
         <div className="mb-8 hidden items-center justify-between md:mx-8 md:mb-0 md:mt-8 md:flex">
@@ -83,9 +82,8 @@ const Sidebar = () => {
         </div>
       </div>
       <div
-        className={`${
-          isOpen ? "" : "hidden"
-        } absolute top-0 z-20 h-[100dvh] w-screen bg-darkTransparent backdrop-blur-[0.1rem] md:hidden`}
+        className={`${isOpen ? "" : "hidden"
+          } absolute top-0 z-20 h-[100dvh] w-screen bg-darkTransparent backdrop-blur-[0.1rem] md:hidden`}
       ></div>
     </>
   );
@@ -120,11 +118,10 @@ const SidebarItem = ({
           setIsOpen(false);
         }}
         href={href}
-        className={`${
-          url === href
+        className={`${url === href
             ? "bg-black/10 dark:bg-background"
             : "hover:bg-black/5 dark:hover:bg-black/[0.15]"
-        } flex items-center gap-2 rounded-md p-1 px-2 transition-colors ease-in md:p-2 `}
+          } flex items-center gap-2 rounded-md p-1 px-2 transition-colors ease-in md:p-2 `}
       >
         <span className="text-lg md:text-xl">{children}</span> <p>{title}</p>
       </Link>
