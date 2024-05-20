@@ -31,7 +31,7 @@ const Tiptap = () => {
 
         content: ``,
         onUpdate: ({ editor }) => {
-            // console.log(editor.getHTML());
+            // console.log(editor.getJSON());
         },
     });
 

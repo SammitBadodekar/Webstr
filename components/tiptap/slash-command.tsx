@@ -134,7 +134,7 @@ export const suggestionItems = createSuggestionItems([
     {
         title: "Text",
         description: "Just start typing with plain text.",
-        searchTerms: ["p", "paragraph"],
+        searchTerms: ["p", "paragraph", "text"],
         icon: <Text size={18} />,
         command: ({ editor, range }) => {
             editor.chain().focus().deleteRange(range).toggleNode("paragraph", "paragraph").run();
@@ -166,7 +166,7 @@ export const suggestionItems = createSuggestionItems([
     {
         title: "Heading 1",
         description: "Big section heading.",
-        searchTerms: ["title", "big", "large"],
+        searchTerms: ["title", "big", "large", "h1", "heading"],
         icon: <Heading1 size={18} />,
         command: ({ editor, range }) => {
             editor.chain().focus().deleteRange(range).setNode("heading", { level: 1 }).run();
@@ -175,7 +175,7 @@ export const suggestionItems = createSuggestionItems([
     {
         title: "Heading 2",
         description: "Medium section heading.",
-        searchTerms: ["subtitle", "medium"],
+        searchTerms: ["subtitle", "medium", "h2", "heading"],
         icon: <Heading2 size={18} />,
         command: ({ editor, range }) => {
             editor.chain().focus().deleteRange(range).setNode("heading", { level: 2 }).run();
@@ -184,7 +184,7 @@ export const suggestionItems = createSuggestionItems([
     {
         title: "Heading 3",
         description: "Small section heading.",
-        searchTerms: ["subtitle", "small"],
+        searchTerms: ["subtitle", "small", "h3", "heading"],
         icon: <Heading3 size={18} />,
         command: ({ editor, range }) => {
             editor.chain().focus().deleteRange(range).setNode("heading", { level: 3 }).run();
@@ -193,7 +193,7 @@ export const suggestionItems = createSuggestionItems([
     {
         title: "Bullet List",
         description: "Create a simple bullet list.",
-        searchTerms: ["unordered", "point"],
+        searchTerms: ["unordered", "point", "list"],
         icon: <List size={18} />,
         command: ({ editor, range }) => {
             editor.chain().focus().deleteRange(range).toggleBulletList().run();
@@ -202,7 +202,7 @@ export const suggestionItems = createSuggestionItems([
     {
         title: "Numbered List",
         description: "Create a list with numbering.",
-        searchTerms: ["ordered"],
+        searchTerms: ["ordered", "list"],
         icon: <ListOrdered size={18} />,
         command: ({ editor, range }) => {
             editor.chain().focus().deleteRange(range).toggleOrderedList().run();
@@ -211,7 +211,7 @@ export const suggestionItems = createSuggestionItems([
     {
         title: "Quote",
         description: "Capture a quote.",
-        searchTerms: ["blockquote"],
+        searchTerms: ["blockquote", "quote"],
         icon: <TextQuote size={18} />,
         command: ({ editor, range }) =>
             editor.chain().focus().deleteRange(range).toggleNode("paragraph", "paragraph").toggleBlockquote().run(),
@@ -219,7 +219,7 @@ export const suggestionItems = createSuggestionItems([
     {
         title: "Code",
         description: "Capture a code snippet.",
-        searchTerms: ["codeblock"],
+        searchTerms: ["codeblock", "code"],
         icon: <Code size={18} />,
         command: ({ editor, range }) => editor.chain().focus().deleteRange(range).toggleCodeBlock().run(),
     },
