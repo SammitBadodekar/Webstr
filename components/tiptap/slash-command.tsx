@@ -18,8 +18,10 @@ import {
     Text,
     TextQuote,
     Youtube,
-    DiamondIcon
+    DiamondIcon,
+    Columns
 } from "lucide-react";
+import { TbColumns3 } from "react-icons/tb";
 
 
 const Command = Extension.create({
@@ -222,6 +224,24 @@ export const suggestionItems = createSuggestionItems([
         searchTerms: ["codeblock", "code"],
         icon: <Code size={18} />,
         command: ({ editor, range }) => editor.chain().focus().deleteRange(range).toggleCodeBlock().run(),
+    },
+    {
+        title: "Columns 2",
+        description: "colums",
+        searchTerms: ["layout", "column"],
+        icon: <Columns size={18} />,
+        command: ({ editor, range }) => {
+            editor.chain().focus().setColumns(2).run()
+        }
+    },
+    {
+        title: "Columns 3",
+        description: "colums",
+        searchTerms: ["layout", "column"],
+        icon: <TbColumns3 size={18} />,
+        command: ({ editor, range }) => {
+            editor.chain().focus().setColumns(3).run()
+        }
     },
     // {
     //     title: "Image",
