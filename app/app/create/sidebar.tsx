@@ -12,23 +12,17 @@ import { IoMdArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 import { MdOutlineDone } from "react-icons/md";
 import Link from 'next/link';
+import { Editor } from '@tiptap/react';
+import { NodeButtonEditor } from '@/components/nodes';
 
 
-export const SideMenu = () => {
+export const SideBar = ({ editor }: { editor: Editor | null }) => {
   // const [activeSection, setActiveSection] = useState<string | null>(null)
   // const [activeTab, setActiveTab] = useState<string | null>(null)
   // const isItemSelected = active && related?.toolbar
 
   return (
-    <aside className="h-[100dvh] w-[28rem] bg-popover p-4">
-      {/* <Button onClick={() => {
-          const json = query.serialize();
-          copy(lz.encodeBase64(lz.compress(json)));
-        }}>get json</Button> */}
-
-      {/* show properties of selected item */}
-
-      {/* {!isItemSelected && !activeSection && ( */}
+    <aside className="hidden h-[100dvh] w-[28rem] bg-popover p-4 md:block">
       <div className="grid gap-8 p-4">
         <div className="flex w-full items-center justify-around gap-8">
           <Link
@@ -77,6 +71,10 @@ export const SideMenu = () => {
           </div>
         </div>
       </> */}
+
+      <div>
+        {editor?.isActive("nodeButton") && <NodeButtonEditor editor={editor} />}
+      </div>
     </aside>
   );
 };

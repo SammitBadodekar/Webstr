@@ -15,11 +15,13 @@ interface MenuItem {
     item: SuggestionItem,
     editor: Editor,
     range: any;
+    isSelected: boolean
 }
 
 const Menu = (props: MenuProps) => {
     const { items, editor, range, query } = props
     const [searchItems, setSearchItems] = useState<SuggestionItem[]>(items)
+    const [selectedItem, setSelectedItem] = useState<number>(0)
 
     useEffect(() => {
         const updateItems = debounce(() => {
@@ -31,6 +33,7 @@ const Menu = (props: MenuProps) => {
                                 .length !== 0,
                     ),
                 );
+                setSelectedItem(0)
             } else {
                 setSearchItems(items);
             }
@@ -39,10 +42,43 @@ const Menu = (props: MenuProps) => {
         updateItems()
     }, [query])
 
+    useEffect(() => {
+        const onKeyDown = (e: KeyboardEvent) => {
+            const slashCommand = document.getElementById("slash-command")
+            slashCommand?.focus()
+            console.log("called", e.key, document.activeElement)
+
+            if (e.key === "ArrowUp") {
+                e.preventDefault()
+                e.stopPropagation()
+                setSelectedItem((prev) => prev - 1)
+            }
+
+            if (e.key === "ArrowDown" && selectedItem < searchItems.length) {
+                e.preventDefault()
+                e.stopPropagation()
+                setSelectedItem((prev) => prev + 1)
+            }
+
+            if (e.key === "Enter") {
+                e.preventDefault()
+                e.stopPropagation()
+                // @ts-ignore
+                searchItems[selectedItem].command({ editor, range } as any)
+            }
+        }
+
+
+        document.addEventListener("keydown", onKeyDown)
+        return () => {
+            document.removeEventListener("keydown", onKeyDown)
+        }
+    }, [])
+
     return (
-        <ul className="p-2 rounded-md bg-popover h-80 w-max overflow-y-scroll">
+        <ul className="p-2 rounded-md bg-popover h-80 w-max overflow-y-scroll" id='slash-command'>
             {searchItems?.map((item, index) => {
-                return <MenuItem key={index} item={item} editor={editor} range={range} />;
+                return <MenuItem key={index} item={item} editor={editor} range={range} isSelected={index === selectedItem} />;
             })}
         </ul>
     );
@@ -50,10 +86,10 @@ const Menu = (props: MenuProps) => {
 
 export default Menu
 
-const MenuItem = ({ item, editor, range }: MenuItem) => {
+const MenuItem = ({ item, editor, range, isSelected }: MenuItem) => {
     return (
         <button
-            className="flex items-center gap-4 p-2 hover:bg-primary-foreground w-full rounded-md"
+            className={`${isSelected && "bg-primary-foreground"} flex items-center gap-4 p-2 hover:bg-primary-foreground w-full rounded-md`}
             onClick={() => {
                 if (editor && range) {
                     // @ts-ignore
