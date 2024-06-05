@@ -226,22 +226,18 @@ export const suggestionItems = createSuggestionItems([
         command: ({ editor, range }) => editor.chain().focus().deleteRange(range).toggleCodeBlock().run(),
     },
     {
-        title: "Columns 2",
-        description: "colums",
-        searchTerms: ["layout", "column"],
-        icon: <Columns size={18} />,
-        command: ({ editor, range }) => {
-            editor.chain().focus().setColumns(2).run()
-        }
+        title: "Section",
+        description: "add new section",
+        searchTerms: ["section", "layout"],
+        icon: <Code size={18} />,
+        command: ({ editor, range }) => editor.chain().focus().deleteRange(range).insertTable({ rows: 1, cols: 1, withHeaderRow: false }).run(),
     },
     {
-        title: "Columns 3",
-        description: "colums",
-        searchTerms: ["layout", "column"],
-        icon: <TbColumns3 size={18} />,
-        command: ({ editor, range }) => {
-            editor.chain().focus().setColumns(3).run()
-        }
+        title: "Column 2",
+        description: "2 columns",
+        searchTerms: ["section", "layout", "columns", "2"],
+        icon: <Code size={18} />,
+        command: ({ editor, range }) => editor.chain().focus().deleteRange(range).insertTable({ rows: 1, cols: 2, withHeaderRow: false }).run(),
     },
     // {
     //     title: "Image",

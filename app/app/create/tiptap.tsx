@@ -6,6 +6,10 @@ import Toolbar from './toolbar';
 import nodeButton from '@/components/nodes/nodeButton';
 import { slashCommand } from '@/components/tiptap/slash-command';
 import Placeholder from '@tiptap/extension-placeholder'
+import Table from "@tiptap/extension-table"
+import TableCell from '@tiptap/extension-table-cell'
+import TableHeader from '@tiptap/extension-table-header'
+import TableRow from '@tiptap/extension-table-row'
 import { ColumnExtension } from "@gocapsule/column-extension";
 import { useEffect, useState } from 'react';
 import { SideBar } from './sidebar';
@@ -23,6 +27,12 @@ const Tiptap = () => {
             Placeholder.configure({
                 placeholder: `Press "/" for commands`,
             }),
+            Table.configure({
+                resizable: true,
+            }),
+            TableRow,
+            TableHeader,
+            TableCell,
         ],
         editorProps: {
             attributes: {

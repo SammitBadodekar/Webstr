@@ -20,7 +20,7 @@ export const nodeButton = (props: any) => {
                     <RxDragHandleDots2 />
                 </div>
                 <Button className={`w-${attributes?.width} p-0`} variant={attributes?.variant} size={attributes?.size}>
-                    <NodeViewContent className={`content ${attributes?.size === "sm" ? "px-3" : attributes?.size === "lg" ? "px-8" : "px-4"}`} />
+                    <NodeViewContent className={`content ${attributes?.size === "sm" ? "px-3" : attributes?.size === "lg" ? "px-8" : "px-4"} w-${attributes?.width}`} />
                 </Button>
             </div>
         </NodeViewWrapper>
