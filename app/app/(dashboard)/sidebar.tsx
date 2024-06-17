@@ -14,6 +14,7 @@ import { usePathname, useRouter } from "next/navigation";
 import Profile from "@/components/profile";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import ProPlanBanner from "./pro-plan-banner";
+import Logo from "@/components/ui/logo";
 
 const Sidebar = () => {
   const { data: session } = useSession();
@@ -41,19 +42,14 @@ const Sidebar = () => {
     <>
       <div
         className={` ${!isOpen
-            ? "-translate-x-full md:translate-x-0"
-            : "translate-x-0  md:pt-0"
+          ? "-translate-x-full md:translate-x-0"
+          : "translate-x-0  md:pt-0"
           } fixed top-0 z-30 flex h-full w-64 flex-col overflow-y-scroll bg-popover p-2 transition-transform md:static md:z-0 md:w-96 `}
         ref={modalRef}
       >
         <div className="mb-8 hidden items-center justify-between md:mx-8 md:mb-0 md:mt-8 md:flex">
-          <Link
-            href="/"
-            className="font-logo w-fit text-3xl font-black md:text-5xl "
-          >
-            Webstr
-          </Link>
-          <ThemeToggle />
+          <Logo isLink={true} href="/" />
+          {/* <ThemeToggle /> */}
         </div>
 
         <div className="flex flex-col gap-1 p-2 md:p-8">
@@ -119,8 +115,8 @@ const SidebarItem = ({
         }}
         href={href}
         className={`${url === href
-            ? "bg-black/10 dark:bg-background"
-            : "hover:bg-black/5 dark:hover:bg-black/[0.15]"
+          ? "bg-black/10 dark:bg-background"
+          : "hover:bg-black/5 dark:hover:bg-black/[0.15]"
           } flex items-center gap-2 rounded-md p-1 px-2 transition-colors ease-in md:p-2 `}
       >
         <span className="text-lg md:text-xl">{children}</span> <p>{title}</p>
