@@ -14,9 +14,13 @@ import { ColumnExtension } from "@gocapsule/column-extension";
 import { useEffect, useState } from 'react';
 import { SideBar } from './sidebar';
 import MobileMenu from './mobile-menu';
+import { Toggle } from '@/components/ui/toggle';
+import { Bold, Italic, Strikethrough } from 'lucide-react';
+import { Cell } from '@/components/nodes';
 
 const Tiptap = () => {
     const [isEditorMounted, setIsEditorMounted] = useState(false)
+    const [range, setRange] = useState<any>()
 
     const editor = useEditor({
         extensions: [
@@ -29,10 +33,13 @@ const Tiptap = () => {
             }),
             Table.configure({
                 resizable: true,
+                HTMLAttributes: {
+                    class: 'w-full',
+                },
             }),
             TableRow,
             TableHeader,
-            TableCell,
+            Cell
         ],
         editorProps: {
             attributes: {
@@ -56,25 +63,37 @@ const Tiptap = () => {
                     {/* <BubbleMenu
                         editor={editor}
                         tippyOptions={{ duration: 100, trigger: "click" }}
+                        className='bg-popover p-2 rounded-md'
                     >
-                        <button
-                            onClick={() => editor?.chain().focus().toggleBold().run()}
-                            className={editor?.isActive("bold") ? "is-active" : ""}
+                        <Toggle
+                            aria-label="Toggle bold"
+                            pressed={editor?.isActive("bold")}
+                            onPressedChange={() => editor?.chain()?.focus()?.toggleBold().run()}
                         >
-                            bold
-                        </button>
-                        <button
-                            onClick={() => editor?.chain().focus().toggleItalic().run()}
-                            className={editor?.isActive("italic") ? "is-active" : ""}
+                            <Bold className="h-4 w-4" />
+                        </Toggle>
+                        <Toggle
+                            aria-label="Toggle italic"
+                            pressed={editor?.isActive("italic")}
+                            onPressedChange={() => editor?.chain()?.focus()?.toggleItalic().run()}
                         >
-                            italic
-                        </button>
-                        <button
-                            onClick={() => editor?.chain().focus().toggleStrike().run()}
-                            className={editor?.isActive("strike") ? "is-active" : ""}
+                            <Italic className="h-4 w-4" />
+                        </Toggle>
+                        <Toggle
+                            aria-label="Toggle italic"
+                            pressed={editor?.isActive("strike")}
+                            onPressedChange={() => editor?.chain()?.focus()?.toggleStrike().run()}
                         >
-                            strike
-                        </button>
+                            <Strikethrough className="h-4 w-4" />
+                        </Toggle>
+                        <Toggle
+                            aria-label="Toggle italic"
+                            pressed={editor?.isActive("strike")}
+                            onPressedChange={() => { editor?.commands?.deleteSelection() }}
+                        >
+                            delete
+                        </Toggle>
+
                     </BubbleMenu> */}
                 </div>
             </div></div>

@@ -12,13 +12,13 @@ export const nodeButton = (props: any) => {
     return (
         <NodeViewWrapper className="node-button">
             <div className="content flex">
-                <div
+                {/* <div
                     contentEditable={false}
                     data-drag-handle=""
                     className='flex justify-center items-center px-2'
                 >
                     <RxDragHandleDots2 />
-                </div>
+                </div> */}
                 <Button className={`w-${attributes?.width} p-0`} variant={attributes?.variant} size={attributes?.size}>
                     <NodeViewContent className={`content ${attributes?.size === "sm" ? "px-3" : attributes?.size === "lg" ? "px-8" : "px-4"} w-${attributes?.width}`} />
                 </Button>
@@ -162,6 +162,7 @@ export const NodeButtonEditor = ({ editor }: { editor: Editor }) => {
                     </TabsList>
                 </Tabs>
             </div>
+            <Button variant="destructive" onClick={() => { editor.commands.deleteNode("nodeButton") }}>Delete</Button>
         </div>
     );
 }

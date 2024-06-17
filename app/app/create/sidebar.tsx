@@ -13,7 +13,7 @@ import { IoIosArrowForward } from "react-icons/io";
 import { MdOutlineDone } from "react-icons/md";
 import Link from 'next/link';
 import { Editor } from '@tiptap/react';
-import { NodeButtonEditor } from '@/components/nodes';
+import { CellEditor, NodeButtonEditor } from '@/components/nodes';
 
 
 export const SideBar = ({ editor }: { editor: Editor | null }) => {
@@ -74,6 +74,7 @@ export const SideBar = ({ editor }: { editor: Editor | null }) => {
 
       <div>
         {editor?.isActive("nodeButton") && <NodeButtonEditor editor={editor} />}
+        {editor?.isActive("table") && <CellEditor editor={editor} />}
       </div>
     </aside>
   );
